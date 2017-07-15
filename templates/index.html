@@ -1,1 +1,20 @@
-Test
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<div>
+  <ul>
+    {% for item in sales.data %}
+      {% for line in item.line_items %}
+        <li>{{line.product_name}}</li>
+      {% endfor %}
+    {% endfor %}
+  </ul>
+</div>
+
+
+
+{% endblock %}
