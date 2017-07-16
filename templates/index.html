@@ -11,8 +11,8 @@
 <div class = "container-fluid">
   <div class="row">
     {% for sale in sales.data %}
-      <div class="col-md-6">
-        <p class ='text-left underline'>{{sale.outlet}}, {{sale.sale_date}}</p>
+      <div class="col-md-8">
+        <strong class ='text-left'>{{sale.outlet}}, {{sale.sale_date}}</strong>
       {% for line in sale.line_items %}
         <p class='text-left'>{{line.product_name}}</p>
       {% endfor %}
