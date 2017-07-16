@@ -7,8 +7,9 @@
 {% block main %}
 <div>
   <ul>
-    {% for item in sales.data %}
-      {% for line in item.line_items %}
+    {% for sale in sales.data %}
+      new sale
+      {% for line in sale.line_items %}
         <li>{{line.product_name}}</li>
       {% endfor %}
     {% endfor %}

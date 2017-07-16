@@ -1,8 +1,6 @@
 import datetime
 import requests
 
-version = 3052136702
-
 class Vend:
     def __init__(self, company_name, access_token):
         self.company_name = company_name
@@ -38,9 +36,9 @@ class Vend:
             # FIXME handle this
             return None
 
-    def __get_response(self, endpoint, parameters=None):
+    def __get_response(self, endpoint, parameters=None,params={}):
         url = self.__build_build_url(endpoint, parameters=parameters)
-        r = requests.get(url,headers=self.__headers(),params=self.__params)
+        r = requests.get(url,headers=self.__headers(),params=params)
         return r.json()
 
 
@@ -92,8 +90,8 @@ class Vend:
         #parameters = self.__fix_parameters({'tag': tag, 'status': status,
                                         #    'outlet_id': outlet_id})
 
-        response = self.__get_response(endpoint='sales')
-
+        response = self.__get_response(endpoint='search',params={"order_by":"date","order_direction":"descending","page_size":100,"type":"sales"})
+        print(response)
         return response
 
     def get_sale(self, unique_id):
@@ -108,18 +106,6 @@ class Vend:
                 parameters.pop(parameter)
 
         return parameters
-    def find_version(self,version):
-        r = self.__build_get_request(endpoint='sales',dict={"after":version})
-        while len(r["data"]):
-            version = r["version"]["max"]
-            r = self.__build_get_request(endpoint='sales',dict={"after":version})
-            print(version)
-
-        return version
-
-
-vend=Vend(company_name='harvardshop',access_token='2tQzNrcZpJ7vDDXgznMJzk_AhITGUl92NHRPixwz')
-vend.find_version(3052136702)
 
 """
 Stock Control

@@ -1,9 +1,15 @@
 import os
 import re
 import requests
+import csv
 from flask import Flask, jsonify, render_template, request, url_for, redirect
 from flask_jsglue import JSGlue
 from .vend import Vend
+
+#read products into dict
+with open("product-export.csv",mode='r',encoding='latin-1') as fp:
+    reader = csv.reader(fp)
+    products = {row[0]:row[6] for row in reader}
 
 # configure application
 app = Flask(__name__)
@@ -13,9 +19,9 @@ JSGlue(app)
 # global client secret key
 client_secret = 'j5PM7viAPHCZ6DMCIH4NLFvQeCiwVf4H'
 client_id = 'vQ7l7OTmVg8OBET6vwdSXoCDOmvvJ05F'
-token = '2tQzNrcZpJ7vDDXgznMJzk_yh2EON82irpEJxKWb'
+token = '2tQzNrcZpJ7vDDXgznMJzk_Cjr7L8eEIURUw5Lm6'
 
-vend = Vend('harvardshop','2tQzNrcZpJ7vDDXgznMJzk_yh2EON82irpEJxKWb')
+vend = Vend('harvardshop',token)
 
 # ensure responses aren't cached
 if app.config["DEBUG"]:
@@ -38,10 +44,12 @@ def index():
         token = r.json()["access_token"]
         print(token)
     sales = vend.get_sales()
-    del sales['data'][4:]
-    for e in sales['data']:
-        for line in e['line_items']:
-            line['product_name']=vend.get_product(line['product_id'])['data']['name']
+    for sale in sales['data']:
+        for line in sale['line_items']:
+            try:
+                line['product_name']=products[line['product_id']]
+            except KeyError:
+                line['product_name']='no name'
             print(line['product_name'])
     return render_template("index.html", sales = sales)
 
