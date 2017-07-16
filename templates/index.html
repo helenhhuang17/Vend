@@ -5,15 +5,20 @@
 {% endblock %}
 
 {% block main %}
-<div>
-  <ul>
+<h1>
+  Sale History
+</h1>
+<div class = "container-fluid">
+  <div class="row">
     {% for sale in sales.data %}
-      new sale
+      <div class="col-md-6">
+        <p class ='text-left underline'>{{sale.outlet}}, {{sale.sale_date}}</p>
       {% for line in sale.line_items %}
-        <li>{{line.product_name}}</li>
+        <p class='text-left'>{{line.product_name}}</p>
       {% endfor %}
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>
 
 

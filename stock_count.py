@@ -1,7 +1,7 @@
 import csv
 import requests
 
-token = '2tQzNrcZpJ7vDDXgznMJzk_0iRjJapAUutvwrrqu'
+token = '2tQzNrcZpJ7vDDXgznMJzk_Cjr7L8eEIURUw5Lm6'
 MTA = '01f9c6db-e35e-11e2-a415-bc764e10976c'
 GAR = '064dce89-c73d-11e5-ec2a-c92ca32c62a3'
 

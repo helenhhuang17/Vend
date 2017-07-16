@@ -24,6 +24,10 @@
     color: #2e944b;
 }
 
+.underline
+{
+  text-decoration: underline;
+}
 main .form-control
 {
     /* center form controls */

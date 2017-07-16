@@ -23,6 +23,9 @@ token = '2tQzNrcZpJ7vDDXgznMJzk_Cjr7L8eEIURUw5Lm6'
 
 vend = Vend('harvardshop',token)
 
+# create outlets
+outlets = {outlet['id']:outlet['name'] for outlet in vend.get_outlets()['data']}
+
 # ensure responses aren't cached
 if app.config["DEBUG"]:
     @app.after_request
@@ -45,12 +48,13 @@ def index():
         print(token)
     sales = vend.get_sales()
     for sale in sales['data']:
+        sale['outlet']=outlets[sale['outlet_id']]
         for line in sale['line_items']:
             try:
                 line['product_name']=products[line['product_id']]
             except KeyError:
-                line['product_name']='no name'
-            print(line['product_name'])
+                print(line)
+                sale['line_items'].remove(line)
     return render_template("index.html", sales = sales)
 
 @app.route("/login")

@@ -106,6 +106,8 @@ class Vend:
                 parameters.pop(parameter)
 
         return parameters
+    def get_outlets(self):
+        return self.__get_response(endpoint='outlets')
 
 """
 Stock Control
