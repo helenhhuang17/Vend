@@ -19,7 +19,7 @@ JSGlue(app)
 # global client secret key
 client_secret = 'j5PM7viAPHCZ6DMCIH4NLFvQeCiwVf4H'
 client_id = 'vQ7l7OTmVg8OBET6vwdSXoCDOmvvJ05F'
-token = '2tQzNrcZpJ7vDDXgznMJzk_Cjr7L8eEIURUw5Lm6'
+token = '2tQzNrcZpJ7vDDXgznMJzk_PSkKmshstsagRVsOo'
 
 vend = Vend('harvardshop',token)
 
@@ -42,7 +42,7 @@ def index():
         domain_prefix = request.args.get('domain_prefix','')
         d = {"code":code,"client_id":client_id,"client_secret":client_secret,
         "grant_type":"authorization_code","redirect_uri":"http://127.0.0.1:5000"}
-        #r = requests.post("https://{}.vendhq.com/api/1.0/token".format(domain_prefix),d)
+        r = requests.post("https://{}.vendhq.com/api/1.0/token".format(domain_prefix),d)
         global token
         token = r.json()["access_token"]
         print(token)
