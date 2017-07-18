@@ -2,6 +2,7 @@ import csv
 import requests
 import json
 import sys
+import os
 
 token = '2tQzNrcZpJ7vDDXgznMJzk_PSkKmshstsagRVsOo'
 MTA = '01f9c6db-e35e-11e2-a415-bc764e10976c'
@@ -46,13 +47,18 @@ def get_count(product_id,outlet):
             return int(d['current_amount']) #what is the dif between this and inventory_level?
 
 def write_csv(out_file,change_list):
+    fieldnames = ['product_name', 'supply_price','old_count','new_count','dif','value_change']
+    if os.path.isfile(out_file):
+        with open(out_file,'a') as f:
+            writer = csv.DictWriter(f,fieldnames)
+            writer.writerows(change_list)
+    else:
+        with open(out_file,'w') as f:
+            writer = csv.DictWriter(f,fieldnames)
+            writer.writeheader()
+            writer.writerows(change_list)
 
-    with open(out_file,'w') as f2:
-        fieldnames = ['product_name', 'supply_price','old_count','new_count','dif','value_change']
-        writer = csv.DictWriter(f2,fieldnames)
-        writer.writeheader()
-        for c in change_list:
-            writer.writerow(c)
+
 # returns dict of "product_id":"count"
 def get_inventory():
     return
@@ -88,7 +94,7 @@ if len(sys.argv) != 4:
     print('run: python3 stock_count.py [filename.csv] [storename] [outputfile.csv]')
     exit(1)
 try:
-    with open(sys.argv[1],newline='') as f:
+    with open(sys.argv[1],'r',newline='') as f:
         reader = csv.reader(f)
         changes = []
 
