@@ -2,7 +2,7 @@ import os
 import re
 import requests
 import csv
-from flask import Flask, jsonify, render_template, request, url_for, redirect
+from flask import Flask, jsonify, render_template, request, url_for, redirect, Session
 from flask_jsglue import JSGlue
 from .vend import Vend
 
@@ -14,7 +14,8 @@ with open("product-export.csv",mode='r',encoding='latin-1') as fp:
 # configure application
 app = Flask(__name__)
 JSGlue(app)
-
+s = requests.Session()
+s.headers.update({'User-Agent':'theharvardshop_stocktools_JS'})
 
 # global client secret key
 client_secret = 'j5PM7viAPHCZ6DMCIH4NLFvQeCiwVf4H'

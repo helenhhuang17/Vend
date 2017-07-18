@@ -2,6 +2,9 @@ import datetime
 import requests
 
 class Vend:
+    s = requests.Session()
+    s.headers.update({'User-Agent':'theharvardshop_stocktools_JS'})
+    
     def __init__(self, company_name, access_token):
         self.company_name = company_name
         self.access_token = access_token

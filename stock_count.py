@@ -13,6 +13,10 @@ BAS = 'f92e438b-3db4-11e2-b1f5-4040782fde00'
 outlet = MTA
 stock_file = "product-export.csv"
 
+#User-Agent
+s = requests.Session()
+s.headers.update({'User-Agent':'theharvardshop_stocktools_JS'})
+
 #read products into dict
 with open(stock_file,mode='r',encoding='latin-1') as fp:
     reader = csv.reader(fp)
@@ -62,8 +66,6 @@ def prewrite(product_id,d):
     p = p['products'][0]
     d['old_count'] = get_count(product_id,outlet)
     d['product_name']=p['name']
-
-
     #if 'variant_name' in p:
     #    d['variant_name'] = p['variant_name']
 
