@@ -10,13 +10,11 @@ outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
 'BAS':'f92e438b-3db4-11e2-b1f5-4040782fde00'}
 
-#Modify this part
-stock_file = "product-export.csv"
-#User-Agent
+#Establish Session
 s = requests.Session()
 s.headers.update({"User-Agent":"theharvardshop_stocktools_JS","Authorization":"Bearer %s" %token})
 
-#read products into dict
+#Get product information
 with open(stock_file,mode='r',encoding='latin-1') as fp:
     reader = csv.reader(fp)
     products = {}
@@ -33,7 +31,7 @@ def get_id(sku):
         print("Key Error for sku {}".format(sku))
         return None
 
-#returns count of product_id in outlet as integer
+#Returns count of product_id in outlet as integer
 def get_count(response,product_id,outlet):
     if 'inventory' not in response:
         print(response)
@@ -72,8 +70,6 @@ def prewrite(product_id,d):
     #if 'variant_name' in p:
     #    d['variant_name'] = p['variant_name']
 
-
-
 def postwrite(product_id,response,d):
     if 'product' not in response:
         print("Error: {}, sku: {}".format(response['error'],sku))
@@ -87,18 +83,25 @@ def postwrite(product_id,response,d):
     changes.append(d)
     print("successfully updated {} from {} to {}".format(d['product_name'],d['old_count'],d['new_count']))
 
-if len(sys.argv) < 3:
-    print('run: python3 stock_count.py [filename.csv] [storename] [outputfile.csv]')
+def error(str):
+    print("{}, ".format("run: python3 stock_count.py filename.csv storename [outputfile.csv]"))
+    print("valid storenames: 'MTA','GAR',JFK','BAS'")
     exit(1)
 
-out_file = sys.argv[1]
-outlet = outlets[sys.argv[2]]
 #begin script
+if len(sys.argv) < 3:
+    error("Invalid argument number")
+try:
+    out_file = sys.argv[1]
+    outlet = outlets[sys.argv[2]]
+except KeyError:
+    error("Invalid outlet")
+
 if len(sys.argv) == 3:
     while True:
         changes = []
         try:
-            sku,count = list(map(int,input("Format [sku] [count]: ").split(' ')))
+            sku,count = list(map(int,input("Format [sku] [count]: ").split(',')))
         except ValueError:
             print("Wrong format")
             continue
@@ -109,12 +112,11 @@ if len(sys.argv) == 3:
         prewrite(product_id,d)
         payload = json.dumps({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]})
         r = s.post("https://harvardshop.vendhq.com/api/products",data=payload)
-        print(r.json())
         #write results to csv (new_count,dif)
         postwrite(product_id,r.json(),d)
         write_csv(out_file,changes)
 
-else:
+if len(sys.argv) == 4:
     try:
         with open(sys.argv[3],'r',newline='') as f:
             reader = csv.reader(f)
@@ -140,5 +142,4 @@ else:
                 postwrite(product_id,r.json(),d)
             write_csv(out_file,changes)
     except FileNotFoundError:
-        print('File not found')
-        exit(1)
+        error('input file not found')
