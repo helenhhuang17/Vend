@@ -49,6 +49,9 @@ def write_csv(out_file,change_list):
         writer.writeheader()
         for c in change_list:
             writer.writerow(c)
+# returns dict of "product_id":"count"
+def get_inventory():
+    return
 
 def prewrite(product_id,d):
     p = requests.get("https://harvardshop.vendhq.com/api/products/{}".format(product_id),headers={"Authorization":"Bearer %s" %token}).json()
@@ -78,6 +81,7 @@ def postwrite(product_id,response,d):
     changes.append(d)
     print("successfully updated {} from {} to {}".format(d['product_name'],d['old_count'],d['new_count']))
 
+#begin script
 if len(sys.argv) != 4:
     print('run: python3 stock_count.py [filename.csv] [storename] [outputfile.csv]')
     exit(1)
