@@ -39,7 +39,7 @@ def index():
         domain_prefix = request.args.get('domain_prefix','')
         payload = {"code":code,"client_id":client_id,"client_secret":client_secret,
         "grant_type":"authorization_code","redirect_uri":"http://127.0.0.1:5000"}
-        r = requests.post("https://{}.vendhq.com/api/1.0/token".format(domain_prefix),payload)
+        r = s.post("https://{}.vendhq.com/api/1.0/token".format(domain_prefix),payload)
         token = r.json()["access_token"]
         print(token)
     try:
@@ -64,5 +64,5 @@ def login():
 @app.route("/inventory")
 def inventory():
     url = "https://harvardshop.vendhq.com/api/2.0/inventory"
-    response = requests.get(url,headers={"Authorization":"Bearer %s" %token})
+    response = s.get(url)
     return render_template("inventory.html",r=response.json()['data'])

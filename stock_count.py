@@ -14,7 +14,7 @@ outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 stock_file = "product-export.csv"
 #User-Agent
 s = requests.Session()
-s.headers.update({'User-Agent':'theharvardshop_stocktools_JS'})
+s.headers.update({"User-Agent":"theharvardshop_stocktools_JS","Authorization":"Bearer %s" %token})
 
 #read products into dict
 with open(stock_file,mode='r',encoding='latin-1') as fp:
@@ -61,7 +61,7 @@ def get_inventory():
     return
 
 def prewrite(product_id,d):
-    r = requests.get("https://harvardshop.vendhq.com/api/products/{}".format(product_id),headers={"Authorization":"Bearer %s" %token}).json()
+    r = s.get("https://harvardshop.vendhq.com/api/products/{}".format(product_id)).json()
     try:
         r = r['products'][0]
     except['KeyError']:
@@ -108,7 +108,7 @@ if len(sys.argv) == 3:
         d = {}
         prewrite(product_id,d)
         payload = json.dumps({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]})
-        r = requests.post("https://harvardshop.vendhq.com/api/products",data=payload,headers={"Authorization":"Bearer %s" %token})
+        r = s.post("https://harvardshop.vendhq.com/api/products",data=payload)
         print(r.json())
         #write results to csv (new_count,dif)
         postwrite(product_id,r.json(),d)
@@ -134,7 +134,7 @@ else:
                 d = {}
                 prewrite(product_id,d)
                 payload = json.dumps({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]})
-                r = requests.post("https://harvardshop.vendhq.com/api/products",data=payload,headers={"Authorization":"Bearer %s" %token})
+                r = s.post("https://harvardshop.vendhq.com/api/products",data=payload)
 
                 #write results to csv (new_count,dif)
                 postwrite(product_id,r.json(),d)
