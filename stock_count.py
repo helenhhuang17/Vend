@@ -3,6 +3,7 @@ import requests
 import json
 import sys
 import os
+#Usage arguments: stock_count.py out.csv outlet [in.csv] [add]
 
 token = '2tQzNrcZpJ7vDDXgznMJzk_GaKTP5KLMlyD4v9cX'
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
@@ -43,7 +44,7 @@ def get_count(response,product_id,outlet):
             return int(float(d['count']))
 
 def write_csv(out_file,change_list):
-    fieldnames = ['product_name', 'supply_price','old_count','new_count','dif','value_change','updated_at']
+    fieldnames = ['product_name', 'sku','product_id','supply_price','old_count','new_count','dif','value_change','updated_at']
     if os.path.isfile(out_file):
         with open(out_file,'a') as f:
             writer = csv.DictWriter(f,fieldnames)
@@ -81,6 +82,7 @@ def postwrite(product_id,response,d):
     d['dif'] = d['new_count']-d['old_count']
     d['value_change'] = d['supply_price']*d['dif']
     d['updated_at'] = response['updated_at']
+    d['product_id'] = product_id
     changes.append(d)
     print("successfully updated {} from {} to {}".format(d['product_name'],d['old_count'],d['new_count']))
 
@@ -117,7 +119,7 @@ if len(sys.argv) == 3:
         postwrite(product_id,r.json(),d)
         write_csv(out_file,changes)
 
-if len(sys.argv) == 4:
+if len(sys.argv) >= 4:
     try:
         with open(sys.argv[3],'r',newline='') as f:
             reader = csv.reader(f)
@@ -134,8 +136,10 @@ if len(sys.argv) == 4:
                 product_id = get_id(sku)
 
                 #get following information (name,product_id,sku,old_count)
-                d = {}
+                d = {"sku":sku}
                 prewrite(product_id,d)
+                if len(sys.argv) == 5:
+                    count = count + d['old_count']
                 payload = json.dumps({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]})
                 r = s.post("https://harvardshop.vendhq.com/api/products",data=payload)
 
