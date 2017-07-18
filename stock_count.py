@@ -4,7 +4,7 @@ import json
 import sys
 import os
 
-token = '2tQzNrcZpJ7vDDXgznMJzk_PSkKmshstsagRVsOo'
+token = '2tQzNrcZpJ7vDDXgznMJzk_GaKTP5KLMlyD4v9cX'
 MTA = '01f9c6db-e35e-11e2-a415-bc764e10976c'
 GAR = '064dce89-c73d-11e5-ec2a-c92ca32c62a3'
 JFK = '605445f3-3846-11e2-b1f5-4040782fde00'
@@ -47,7 +47,7 @@ def get_count(product_id,outlet):
             return int(d['current_amount']) #what is the dif between this and inventory_level?
 
 def write_csv(out_file,change_list):
-    fieldnames = ['product_name', 'supply_price','old_count','new_count','dif','value_change']
+    fieldnames = ['product_name', 'supply_price','old_count','new_count','dif','value_change','updated_at']
     if os.path.isfile(out_file):
         with open(out_file,'a') as f:
             writer = csv.DictWriter(f,fieldnames)
@@ -86,6 +86,7 @@ def postwrite(product_id,response,d):
     d['new_count'] = get_count(product_id,outlet)
     d['dif'] = d['new_count']-d['old_count']
     d['value_change'] = d['supply_price']*d['dif']
+    d['updated_at'] = response['updated_at']
     changes.append(d)
     print("successfully updated {} from {} to {}".format(d['product_name'],d['old_count'],d['new_count']))
 
