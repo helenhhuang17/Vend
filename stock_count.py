@@ -34,14 +34,14 @@ def get_id(sku):
         return None
 
 #returns count of product_id in outlet as integer
-def get_count(product_id,outlet):
-    p = requests.get("https://harvardshop.vendhq.com/api/2.0/products/{}/inventory".format(product_id),headers={"Authorization":"Bearer %s" %token}).json()
-    if 'data' not in p:
+def get_count(response,product_id,outlet):
+    if 'inventory' not in response:
+        print(response)
         print("Error, could not get product inventory")
         exit(1)
-    for d in p['data']:
+    for d in response['inventory']:
         if d['outlet_id']==outlet:
-            return int(d['current_amount']) #what is the dif between this and inventory_level?
+            return int(float(d['count']))
 
 def write_csv(out_file,change_list):
     fieldnames = ['product_name', 'supply_price','old_count','new_count','dif','value_change','updated_at']
@@ -61,13 +61,14 @@ def get_inventory():
     return
 
 def prewrite(product_id,d):
-    p = requests.get("https://harvardshop.vendhq.com/api/products/{}".format(product_id),headers={"Authorization":"Bearer %s" %token}).json()
-    if 'products' not in p:
+    r = requests.get("https://harvardshop.vendhq.com/api/products/{}".format(product_id),headers={"Authorization":"Bearer %s" %token}).json()
+    try:
+        r = r['products'][0]
+    except['KeyError']:
         print("Error, could not get product list")
         exit(1)
-    p = p['products'][0]
-    d['old_count'] = get_count(product_id,outlet)
-    d['product_name']=p['name']
+    d['old_count'] = get_count(r,product_id,outlet)
+    d['product_name']=r['name']
     #if 'variant_name' in p:
     #    d['variant_name'] = p['variant_name']
 
@@ -79,7 +80,7 @@ def postwrite(product_id,response,d):
         return
     response = response['product']
     d['supply_price'] = float(response['supply_price'])
-    d['new_count'] = get_count(product_id,outlet)
+    d['new_count'] = get_count(response,product_id,outlet)
     d['dif'] = d['new_count']-d['old_count']
     d['value_change'] = d['supply_price']*d['dif']
     d['updated_at'] = response['updated_at']
@@ -108,7 +109,7 @@ if len(sys.argv) == 3:
         prewrite(product_id,d)
         payload = json.dumps({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]})
         r = requests.post("https://harvardshop.vendhq.com/api/products",data=payload,headers={"Authorization":"Bearer %s" %token})
-
+        print(r.json())
         #write results to csv (new_count,dif)
         postwrite(product_id,r.json(),d)
         write_csv(out_file,changes)
@@ -137,7 +138,7 @@ else:
 
                 #write results to csv (new_count,dif)
                 postwrite(product_id,r.json(),d)
-            write_csv(out_file)
+            write_csv(out_file,changes)
     except FileNotFoundError:
         print('File not found')
         exit(1)
