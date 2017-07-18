@@ -18,7 +18,6 @@ class Vend:
         if parameters:
             p = '/'.join([str(param) for param in parameters])
             endpoint = "{}/{}".format(str(endpoint), p)
-        print(endpoint)
         return "{}/{}".format(self.base_url, endpoint)
 
     def __build_get_request(self, endpoint, parameters=None, dict=None):
@@ -91,7 +90,6 @@ class Vend:
                                         #    'outlet_id': outlet_id})
 
         response = self.__get_response(endpoint='search',params={"order_by":"date","order_direction":"descending","page_size":100,"type":"sales"})
-        print(response)
         return response
 
     def get_sale(self, unique_id):

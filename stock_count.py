@@ -45,7 +45,7 @@ def write_csv(out_file,change_list):
 
     with open(out_file,'w') as f2:
         fieldnames = ['product_name', 'supply_price','old_count','new_count','dif','value_change']
-        writer = csv.DictWriter(f2,d.keys())
+        writer = csv.DictWriter(f2,fieldnames)
         writer.writeheader()
         for c in change_list:
             writer.writerow(c)
