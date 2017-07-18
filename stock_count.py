@@ -5,15 +5,13 @@ import sys
 import os
 
 token = '2tQzNrcZpJ7vDDXgznMJzk_GaKTP5KLMlyD4v9cX'
-MTA = '01f9c6db-e35e-11e2-a415-bc764e10976c'
-GAR = '064dce89-c73d-11e5-ec2a-c92ca32c62a3'
-JFK = '605445f3-3846-11e2-b1f5-4040782fde00'
-BAS = 'f92e438b-3db4-11e2-b1f5-4040782fde00'
+outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
+'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
+'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
+'BAS':'f92e438b-3db4-11e2-b1f5-4040782fde00'}
 
 #Modify this part
-outlet = MTA
 stock_file = "product-export.csv"
-
 #User-Agent
 s = requests.Session()
 s.headers.update({'User-Agent':'theharvardshop_stocktools_JS'})
@@ -39,7 +37,6 @@ def get_id(sku):
 def get_count(product_id,outlet):
     p = requests.get("https://harvardshop.vendhq.com/api/2.0/products/{}/inventory".format(product_id),headers={"Authorization":"Bearer %s" %token}).json()
     if 'data' not in p:
-        print(p)
         print("Error, could not get product inventory")
         exit(1)
     for d in p['data']:
@@ -66,7 +63,6 @@ def get_inventory():
 def prewrite(product_id,d):
     p = requests.get("https://harvardshop.vendhq.com/api/products/{}".format(product_id),headers={"Authorization":"Bearer %s" %token}).json()
     if 'products' not in p:
-        print(p)
         print("Error, could not get product list")
         exit(1)
     p = p['products'][0]
@@ -82,7 +78,7 @@ def postwrite(product_id,response,d):
         print("Error: {}, sku: {}".format(response['error'],sku))
         return
     response = response['product']
-    d['supply_price'] = response['supply_price']
+    d['supply_price'] = float(response['supply_price'])
     d['new_count'] = get_count(product_id,outlet)
     d['dif'] = d['new_count']-d['old_count']
     d['value_change'] = d['supply_price']*d['dif']
@@ -90,34 +86,58 @@ def postwrite(product_id,response,d):
     changes.append(d)
     print("successfully updated {} from {} to {}".format(d['product_name'],d['old_count'],d['new_count']))
 
-#begin script
-if len(sys.argv) != 4:
+if len(sys.argv) < 3:
     print('run: python3 stock_count.py [filename.csv] [storename] [outputfile.csv]')
     exit(1)
-try:
-    with open(sys.argv[1],'r',newline='') as f:
-        reader = csv.reader(f)
+
+out_file = sys.argv[1]
+outlet = outlets[sys.argv[2]]
+#begin script
+if len(sys.argv) == 3:
+    while True:
         changes = []
+        try:
+            sku,count = list(map(int,input("Format [sku] [count]: ").split(' ')))
+        except ValueError:
+            print("Wrong format")
+            continue
+        if get_id(sku) == None:
+            continue
+        product_id = get_id(sku)
+        d = {}
+        prewrite(product_id,d)
+        payload = json.dumps({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]})
+        r = requests.post("https://harvardshop.vendhq.com/api/products",data=payload,headers={"Authorization":"Bearer %s" %token})
 
-        for row in reader:
-            if len(row) != 2:
-                print("Error: format issue")
-                break
-            row = [int(e) for e in row]
-            sku, count = row
-            if get_id(sku) == None:
-                continue
-            product_id = get_id(sku)
+        #write results to csv (new_count,dif)
+        postwrite(product_id,r.json(),d)
+        write_csv(out_file,changes)
 
-            #get following information (name,product_id,sku,old_count)
-            d = {}
-            prewrite(product_id,d)
-            payload = json.dumps({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]})
-            r = requests.post("https://harvardshop.vendhq.com/api/products",data=payload,headers={"Authorization":"Bearer %s" %token})
+else:
+    try:
+        with open(sys.argv[3],'r',newline='') as f:
+            reader = csv.reader(f)
+            changes = []
 
-            #write results to csv (new_count,dif)
-            postwrite(product_id,r.json(),d)
-        write_csv(sys.argv[3],changes)
-except FileNotFoundError:
-    print('File not found')
-    exit(1)
+            for row in reader:
+                if len(row) != 2:
+                    print("Error: format issue")
+                    break
+                row = [int(e) for e in row]
+                sku, count = row
+                if get_id(sku) == None:
+                    continue
+                product_id = get_id(sku)
+
+                #get following information (name,product_id,sku,old_count)
+                d = {}
+                prewrite(product_id,d)
+                payload = json.dumps({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]})
+                r = requests.post("https://harvardshop.vendhq.com/api/products",data=payload,headers={"Authorization":"Bearer %s" %token})
+
+                #write results to csv (new_count,dif)
+                postwrite(product_id,r.json(),d)
+            write_csv(out_file)
+    except FileNotFoundError:
+        print('File not found')
+        exit(1)
