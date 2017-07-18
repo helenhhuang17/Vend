@@ -9,6 +9,7 @@ outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
 'BAS':'f92e438b-3db4-11e2-b1f5-4040782fde00'}
+stock_file = 'product-export.csv'
 
 #Establish Session
 s = requests.Session()
