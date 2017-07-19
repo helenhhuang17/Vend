@@ -1,11 +1,13 @@
 import datetime
 import requests
+import os
 
 class Vend:
     s = requests.Session()
     s.headers.update({'User-Agent':'theharvardshop_stocktools_JS'})
-    
-    def __init__(self, company_name, access_token):
+
+    def __init__(self, company_name, user_agent, access_token):
+        self.user_agent = user_agent
         self.company_name = company_name
         self.access_token = access_token
         self.base_url = "https://{}.vendhq.com/api/2.0".format(self.company_name)

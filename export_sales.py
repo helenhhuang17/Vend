@@ -53,7 +53,9 @@ def print_sales(start,end,outlet,csv_file='export_file.csv'):
 try:
     outlet = sys.argv[1]
     csv_file = sys.argv[2]
+    date1 = sys.argv[3]
+    date2 = sys.argv[4]
 except IndexError:
-    print("Format: python3 outlet date")
+    print("Format: python3 outlet outfile date1 date2 (yyyy-mm-dd)")
 
-print_sales('2017-07-18T04:00:00Z','2017-07-19T04:00:00Z',outlets[outlet],csv_file)
+print_sales('{}T04:00:00Z'.format(date1),'{}T04:00:00Z'.format(date2),outlets[outlet],csv_file)
