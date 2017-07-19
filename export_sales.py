@@ -2,8 +2,9 @@ import csv
 import requests
 import json
 import sys
+import os
 
-token = '2tQzNrcZpJ7vDDXgznMJzk_Gl2U1U0bXUDRG1KAp'
+token = os.environ['token']
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
@@ -29,9 +30,19 @@ def cleanup(product_dict):
             del product_dict[key]
 
 def print_sales(start,end,outlet,csv_file='export_file.csv'):
+    start = str(start) + 'T04:00:00Z'
+    end = str(end) + 'T04:00:00Z'
+    print(start,end)
     sales_dict = {}
-    url = "https://harvardshop.vendhq.com/api/2.0/search?date_from={}&date_to={}&order_by=date&order_direction=desc&page_size=1000&status=closed&type=sales&outlet_id={}".format(start,end,outlet)
-    r = s.get(url).json()
+    url = 'https://harvardshop.vendhq.com/api/2.0/search?date_from={}&'
+        'date_to={}&order_by=date&order_direction=desc&page_size=1000&status='
+        'closed&type=sales&outlet_id={}'.format(start,end,outlets[outlet])
+    try:
+        r = s.get(url).json()
+    except:
+        print(s.get(url))
+        print("Incorrect Key")
+        exit(1)
     for sale in r['data']:
         for item in sale['line_items']:
             try:
@@ -49,13 +60,16 @@ def print_sales(start,end,outlet,csv_file='export_file.csv'):
         writer.writerow(['name','amount sold'])
         for key, value in sales_dict.items():
             writer.writerow([key,value])
+def main():
+    try:
+        outlet = sys.argv[1]
+        csv_file = sys.argv[2]
+        date1 = sys.argv[3]
+        date2 = sys.argv[4]
+    except IndexError:
+        print("Format: python3 outlet outfile date1 date2 (yyyy-mm-dd)")
 
-try:
-    outlet = sys.argv[1]
-    csv_file = sys.argv[2]
-    date1 = sys.argv[3]
-    date2 = sys.argv[4]
-except IndexError:
-    print("Format: python3 outlet outfile date1 date2 (yyyy-mm-dd)")
+    print_sales('{}'.format(date1),'{}'.format(date2),outlet,csv_file)
 
-print_sales('{}T04:00:00Z'.format(date1),'{}T04:00:00Z'.format(date2),outlets[outlet],csv_file)
+if __name__ == "__main__":
+    main()
