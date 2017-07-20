@@ -4,7 +4,7 @@ import json
 import sys
 import os
 
-
+shiftplanning_key ='2e7289b19cb16e522db15754f1f156279621d519'
 token = os.environ['token']
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',

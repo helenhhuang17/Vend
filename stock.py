@@ -186,9 +186,6 @@ if len(sys.argv) >= 4:
                 if len(sys.argv) == 5:
                     count = count + d['old_count']
                 r = update_inventory(product_id,outlet,count)
-                payload = json.dumps()
-                r = s.post("https://harvardshop.vendhq.com/api/products",
-                    data=payload)
 
                 #write results to csv (new_count,dif)
                 postwrite(product_id,r.json(),d)

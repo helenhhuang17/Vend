@@ -5,6 +5,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 from datetime import date,timedelta
 import export_sales
+import shift_planning
 
 today = date.today()
 
