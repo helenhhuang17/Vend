@@ -10,10 +10,10 @@ today = date.today()
 
 for outlet in ['MTA','GAR','JFK']:
     export_sales.print_sales(today,today+timedelta(1),outlet,
-        "{} {}.csv".format(outlet,today))
+        "{}.csv".format(outlet))
 
 fromaddr = "john.shen@hsa.net"
-toaddr = "john.shen7@gmail.com"
+toaddr = "alejandra.resendiz@hsa.net"
 
 msg = MIMEMultipart()
 
@@ -25,7 +25,7 @@ body = "Automated Message: Here are the products sold for the day."
 
 msg.attach(MIMEText(body, 'plain'))
 
-filenames = ["mta.csv","jfk.csv","gar.csv"]
+filenames = ["MTA.csv","JFK.csv","GAR.csv"]
 for f in filenames:
     attachment = open("mta.csv", "rb")
     part = MIMEBase('application', 'octet-stream')
