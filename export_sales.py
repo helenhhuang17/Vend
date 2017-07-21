@@ -80,6 +80,7 @@ def main():
         date2 = sys.argv[4]
     except IndexError:
         print("Format: python3 outlet outfile date1 date2 (yyyy-mm-dd)")
+        exit(1)
 
     print_sales('{}'.format(date1),'{}'.format(date2),outlet,csv_file)
 
