@@ -1,0 +1,180 @@
+product_name,sku,product_id,supply_price,old_count,new_count,dif,value_change,updated_at
+Vineyard Vines Harvard Belt / Navy / 32,2413,a814c00f-6c0c-11e2-b1f5-4040782fde00,19.98,3,2,-1,-19.98,2017-07-18 16:38:19
+Vineyard Vines Harvard Belt / Navy / 34,2414,a84ad3f3-6c0c-11e2-b1f5-4040782fde00,20.27,1,5,4,81.08,2017-07-18 16:38:19
+Vineyard Vines Harvard Belt / Navy / 36,2415,a88a54f4-6c0c-11e2-b1f5-4040782fde00,21.28,3,1,-2,-42.56,2017-07-18 16:38:20
+Vineyard Vines Harvard Belt / Navy / 38,2416,a8c4365f-6c0c-11e2-b1f5-4040782fde00,20.92,5,5,0,0.0,2017-07-18 16:38:20
+Vineyard Vines Harvard Belt / Navy / 40,2417,a8fd1046-6c0c-11e2-b1f5-4040782fde00,20.68,3,5,2,41.36,2017-07-18 16:38:21
+Vineyard Vines Harvard Belt / Navy / 42,2418,a934c7e4-6c0c-11e2-b1f5-4040782fde00,19.98,4,6,2,39.96,2017-07-18 16:38:21
+Vineyard Vines Harvard Belt / Navy / 44,2419,a96ff873-6c0c-11e2-b1f5-4040782fde00,21.74,4,4,0,0.0,2017-07-18 16:38:22
+Harvard Sweatpants / Crimson / M,3115,756892cb-6c0c-11e2-b1f5-4040782fde00,11.82,5,7,2,23.64,2017-07-18 16:38:23
+Harvard Sweatpants / Crimson / L,3116,7615a3eb-6c0c-11e2-b1f5-4040782fde00,12.25,5,5,0,0.0,2017-07-18 16:38:23
+Harvard Sweatpants / Crimson / XL,3117,76c6c39e-6c0c-11e2-b1f5-4040782fde00,12.3,4,5,1,12.3,2017-07-18 16:38:24
+Harvard Ladies Crest T-Shirt / Crimson / M,3141,b6269ae9-6c0c-11e2-b1f5-4040782fde00,5.35,3,-4,-7,-37.449999999999996,2017-07-18 16:38:24
+Harvard Ladies Crest T-Shirt / Crimson / L,3142,b6d8b8c2-6c0c-11e2-b1f5-4040782fde00,6.09,2,3,1,6.09,2017-07-18 16:38:25
+Harvard Sweatpants / Ivory / S,3150,777104fa-6c0c-11e2-b1f5-4040782fde00,9.29,1,0,-1,-9.29,2017-07-18 16:38:26
+Harvard Sweatpants / Ivory / M,3151,780c2ce2-6c0c-11e2-b1f5-4040782fde00,9.19,3,5,2,18.38,2017-07-18 16:38:26
+Youth Harvard Crest Hooded Sweatshirt / Crimson / YS,3175,b6bb5f23-6c0c-11e2-b1f5-4040782fde00,12.04,3,6,3,36.12,2017-07-18 16:38:27
+Youth Harvard Crest Hooded Sweatshirt / Crimson / YM,3176,b7a1dcad-6c0c-11e2-b1f5-4040782fde00,12.04,1,0,-1,-12.04,2017-07-18 16:38:27
+Youth Harvard Crest Hooded Sweatshirt / Crimson / YL,3177,b866e35f-6c0c-11e2-b1f5-4040782fde00,12.03,2,1,-1,-12.03,2017-07-18 16:38:28
+Youth Harvard Crest Hooded Sweatshirt / Crimson / YXL,3178,b91424bc-6c0c-11e2-b1f5-4040782fde00,12.06,2,4,2,24.12,2017-07-18 16:38:28
+Vineyard Vines Harvard Tie / Crimson / Vine and Ivy,3206,a84fbe27-6c0c-11e2-b1f5-4040782fde00,33.49,1,1,0,0.0,2017-07-18 16:38:29
+Ladies Vineyard Vines Shep Shirt / Navy / XS,3211,b56d83d6-6c0c-11e2-b1f5-4040782fde00,51.97,2,2,0,0.0,2017-07-18 16:38:30
+Ladies Vineyard Vines Shep Shirt / Navy / S,3212,b5f053f6-6c0c-11e2-b1f5-4040782fde00,51.65,2,4,2,103.3,2017-07-18 16:38:30
+Ladies Vineyard Vines Shep Shirt / Navy / M,3213,b635d7fa-6c0c-11e2-b1f5-4040782fde00,53.02,2,4,2,106.04,2017-07-18 16:38:31
+Ladies Vineyard Vines Shep Shirt / Navy / L,3214,b678a5f6-6c0c-11e2-b1f5-4040782fde00,52.75,2,4,2,105.5,2017-07-18 16:38:31
+Ladies Vineyard Vines Shep Shirt / Navy / XL,3215,b6af2066-6c0c-11e2-b1f5-4040782fde00,52.65,2,1,-1,-52.65,2017-07-18 16:38:32
+Harvard Ladies Crest T-Shirt / Crimson / XL,3337,b781f22e-6c0c-11e2-b1f5-4040782fde00,6.1,1,2,1,6.1,2017-07-18 16:38:32
+Harvard Hooded Crest Sweatshirt / Oxford / S,3692,5ec7a030-6c0c-11e2-b1f5-4040782fde00,11.72,4,6,2,23.44,2017-07-18 16:38:33
+Harvard Hooded Crest Sweatshirt / Oxford / M,3693,5f237b59-6c0c-11e2-b1f5-4040782fde00,11.74,3,7,4,46.96,2017-07-18 16:38:34
+Harvard Hooded Crest Sweatshirt / Oxford / L,3694,5f8b32b5-6c0c-11e2-b1f5-4040782fde00,11.83,2,3,1,11.83,2017-07-18 16:38:34
+Harvard Hooded Crest Sweatshirt / Oxford / XL,3695,5fe4860a-6c0c-11e2-b1f5-4040782fde00,11.83,2,4,2,23.66,2017-07-18 16:38:35
+Harvard Hooded Crest Sweatshirt / Oxford / XXL,3696,6043d6c4-6c0c-11e2-b1f5-4040782fde00,16.6,1,7,6,99.60000000000001,2017-07-18 16:38:35
+Harvard Hooded Crest Sweatshirt / Crimson / S,3697,5d2b186b-6c0c-11e2-b1f5-4040782fde00,13.43,2,-4,-6,-80.58,2017-07-18 16:38:36
+Harvard Hooded Crest Sweatshirt / Crimson / M,3698,5da8539c-6c0c-11e2-b1f5-4040782fde00,12.74,2,7,5,63.7,2017-07-18 16:38:37
+Harvard Hooded Crest Sweatshirt / Crimson / L,3699,5df7e80d-6c0c-11e2-b1f5-4040782fde00,13.11,4,3,-1,-13.11,2017-07-18 16:38:37
+Harvard Hooded Crest Sweatshirt / Crimson / XL,3700,5e4ea324-6c0c-11e2-b1f5-4040782fde00,12.12,2,0,-2,-24.24,2017-07-18 16:38:38
+Harvard Ladies Crest T-Shirt / Pink / S,3769,b827899f-6c0c-11e2-b1f5-4040782fde00,5.65,5,3,-2,-11.3,2017-07-18 16:38:38
+Harvard Ladies Crest T-Shirt / Pink / M,3770,b8ca10f6-6c0c-11e2-b1f5-4040782fde00,5.81,4,7,3,17.43,2017-07-18 16:38:39
+Harvard Ladies Crest T-Shirt / Pink / L,3771,b979165d-6c0c-11e2-b1f5-4040782fde00,5.93,2,1,-1,-5.93,2017-07-18 16:38:40
+Harvard Ladies Crest T-Shirt / Pink / XL,3772,ba1c2c87-6c0c-11e2-b1f5-4040782fde00,5.83,2,-1,-3,-17.490000000000002,2017-07-18 16:38:40
+Harvard Ladies Crest T-Shirt / Oxford / S,3773,b251536f-6c0c-11e2-b1f5-4040782fde00,5.17,2,-4,-6,-31.02,2017-07-18 16:38:41
+Harvard Ladies Crest T-Shirt / Oxford / M,3774,b357b233-6c0c-11e2-b1f5-4040782fde00,5.16,2,3,1,5.16,2017-07-18 16:38:42
+Harvard Ladies Crest T-Shirt / Oxford / XL,3776,b4ac0405-6c0c-11e2-b1f5-4040782fde00,5.76,3,2,-1,-5.76,2017-07-18 16:38:42
+Harvard Hooded Crest Sweatshirt / Navy / S,4046,608591b7-6c0c-11e2-b1f5-4040782fde00,12.99,4,5,1,12.99,2017-07-18 16:38:43
+Harvard Hooded Crest Sweatshirt / Navy / M,4047,60e985ac-6c0c-11e2-b1f5-4040782fde00,12.13,1,2,1,12.13,2017-07-18 16:38:43
+Harvard Hooded Crest Sweatshirt / Navy / L,4048,614dbe9e-6c0c-11e2-b1f5-4040782fde00,12.35,2,4,2,24.7,2017-07-18 16:38:44
+Harvard Hooded Crest Sweatshirt / Navy / XL,4049,61b6b8fa-6c0c-11e2-b1f5-4040782fde00,12.47,2,2,0,0.0,2017-07-18 16:38:45
+Harvard Hooded Crest Sweatshirt / Navy / XXL,4056,62112ddc-6c0c-11e2-b1f5-4040782fde00,16.12,1,0,-1,-16.12,2017-07-18 16:38:45
+Leather Harvard Padfolio / Black,10070,1ed60860-cf9e-11e2-a415-bc764e10976c,10.53,8,8,0,0.0,2017-07-18 16:38:46
+Youth Harvard Crest Hooded Sweatshirt / Oxford / YS,10101,5ed4a72c-b747-11e2-a415-bc764e10976c,12.04,2,4,2,24.08,2017-07-18 16:38:46
+Youth Harvard Crest Hooded Sweatshirt / Oxford / YM,10102,6dbfb06a-b747-11e2-a415-bc764e10976c,12.04,3,6,3,36.12,2017-07-18 16:38:47
+Youth Harvard Crest Hooded Sweatshirt / Oxford / YL,10103,7c01ccdb-b747-11e2-a415-bc764e10976c,12.04,5,4,-1,-12.04,2017-07-18 16:38:48
+Youth Harvard Crest Hooded Sweatshirt / Oxford / YXL,10104,8a193954-b747-11e2-a415-bc764e10976c,12.04,0,2,2,24.08,2017-07-18 16:38:48
+Vineyard Vines Harvard Tie / Light Blue / Vine and Ivy,10323,bc6a1b39-f23c-11e3-a0f5-b8ca3a64f8f4,33.49,5,5,0,0.0,2017-07-18 16:38:49
+Harvard Crest Striped Bow Tie / Crimson / Striped,10330,4c4dbb8c-f596-11e3-a0f5-b8ca3a64f8f4,23.24,4,4,0,0.0,2017-07-18 16:38:49
+Ladies Arc T-Shirt / Ivory / M,10365,b8ca3a65-013d-11e4-fbb5-48e2554dc297,5.0,1,2,1,5.0,2017-07-18 16:38:50
+Ladies Arc T-Shirt / Ivory / L,10366,b8ca3a65-013d-11e4-fbb5-48e260cf4360,5.0,2,2,0,0.0,2017-07-18 16:38:51
+Harvard Luggage Tag / Athletic H,10376,b8ca3a65-013d-11e4-fbb5-7f5997f44a76,3.58,2,2,0,0.0,2017-07-18 16:38:51
+Harvard Sweatpants / Ivory / XL,10416,7969a9d5-6c0c-11e2-b1f5-4040782fde00,9.57,10,6,-4,-38.28,2017-07-18 16:38:52
+H Long Sleeve T-shirt / Crimson / S,10436,a0369f1f-903d-11e4-f68e-c9b7cf587593,5.8,3,-3,-6,-34.8,2017-07-18 16:38:52
+H Long Sleeve T-shirt / Crimson / M,10437,a0369f1f-903d-11e4-f68e-c9b7e88e6864,0.0,4,3,-1,-0.0,2017-07-18 16:38:53
+H Long Sleeve T-shirt / Crimson / L,10438,a0369f1f-903d-11e4-f68e-c9b7ee01124f,0.0,3,6,3,0.0,2017-07-18 16:38:53
+H Long Sleeve T-shirt / Crimson / XL,10439,a0369f1f-903d-11e4-f68e-c9b7f9e950a2,0.0,2,2,0,0.0,2017-07-18 16:38:54
+Harvard Teddy Bear / Chocolate,10477,e52b2846-e93d-11e5-f98b-15c415043368,6.64,13,15,2,13.28,2017-07-18 16:38:55
+Harvard Panda Bear,10478,e52b2846-e93d-11e5-f98b-15c435053d40,6.61,6,3,-3,-19.830000000000002,2017-07-18 16:38:55
+Harvard Ladies Athletic Shorts / Maroon / S,10493,e52b2846-e93d-11e5-f98b-24be9952e3e3,11.41,2,2,0,0.0,2017-07-18 16:38:56
+Harvard Ladies Athletic Shorts / Maroon / M,10494,e52b2846-e93d-11e5-f98b-24be9f2464a1,11.41,0,5,5,57.05,2017-07-18 16:38:56
+Harvard Ladies Athletic Shorts / Maroon / L,10495,e52b2846-e93d-11e5-f98b-24bea34cdd4e,11.41,2,3,1,11.41,2017-07-18 16:38:57
+Harvard Ladies Athletic Shorts / Maroon / XL,10496,e52b2846-e93d-11e5-f98b-24bea83800ce,11.41,2,9,7,79.87,2017-07-18 16:38:58
+Harvard Dog / Brown,10582,064dce89-c73d-11e5-ec2a-b3080b6fcf03,8.86,6,18,12,106.32,2017-07-18 16:38:58
+Harvard Hockey Applique Sweatshirt / Charcoal / XS,10598,064dce89-c73d-11e5-ec2a-e21db9e13bb1,15.5,3,1,-2,-31.0,2017-07-18 16:38:59
+Harvard Quarter Zip Applique / Oxford / XS,10599,064dce89-c73d-11e5-ec2a-e21ee6192e13,15.5,4,8,4,62.0,2017-07-18 16:38:59
+Harvard Quarter Zip Applique / Oxford / S,10600,064dce89-c73d-11e5-ec2a-e21ee673cd0d,15.5,1,2,1,15.5,2017-07-18 16:39:00
+Harvard Quarter Zip Applique / Oxford / M,10601,064dce89-c73d-11e5-ec2a-e21ee6d0cd4d,15.5,3,1,-2,-31.0,2017-07-18 16:39:01
+Harvard Quarter Zip Applique / Oxford / L,10602,064dce89-c73d-11e5-ec2a-e21ee7351cfc,15.5,1,2,1,15.5,2017-07-18 16:39:01
+Harvard Hockey Applique Sweatshirt / Charcoal / S,10604,064dce89-c73d-11e5-ec2a-e21f214546c8,16.0,2,-6,-8,-128.0,2017-07-18 16:39:02
+Harvard Hockey Applique Sweatshirt / Charcoal / M,10605,064dce89-c73d-11e5-ec2a-e21f2639a19b,16.0,1,5,4,64.0,2017-07-18 16:39:03
+Harvard Hockey Applique Sweatshirt / Charcoal / L,10606,064dce89-c73d-11e5-ec2a-e21f2fb5eb6c,16.0,1,4,3,48.0,2017-07-18 16:39:03
+Harvard Long Sleeve T-Shirt / Crimson / S,10609,064dce89-c73d-11e5-ec2a-e227424ed0e2,7.5,3,6,3,22.5,2017-07-18 16:39:04
+Harvard Long Sleeve T-Shirt / Crimson / XL,10612,064dce89-c73d-11e5-ec2a-e227437e053e,7.5,2,3,1,7.5,2017-07-18 16:39:05
+Harvard Applique Full Zip / XS / Crimson,10642,0274a24e-fd3d-11e6-f3f1-1a2e5e0990c4,15.5,0,3,3,46.5,2017-07-18 16:39:05
+Harvard Teddy Bear / Brown,10653,060f02b1-c83d-11e6-fcd2-28dca226f540,6.64,5,3,-2,-13.28,2017-07-18 16:39:06
+Harvard Crest Cinch Bag / Black,10654,060f02b1-c83d-11e6-fcd2-2e433d8aacc4,3.75,3,-9,-12,-45.0,2017-07-18 16:39:06
+Harvard Crest Joggers / XS / Oxford,10672,060f02b1-c83d-11e6-fcd2-3952ea20e6da,16.0,4,6,2,32.0,2017-07-18 16:39:07
+Harvard Crest Joggers / S / Oxford,10673,060f02b1-c83d-11e6-fcd2-3952ea74c82a,16.0,6,6,0,0.0,2017-07-18 16:39:07
+Harvard Crest Joggers / M / Oxford,10674,060f02b1-c83d-11e6-fcd2-3952eacc790f,16.0,4,4,0,0.0,2017-07-18 16:39:08
+Harvard Crest Joggers / L / Oxford,10675,060f02b1-c83d-11e6-fcd2-3952eb260cac,16.0,4,4,0,0.0,2017-07-18 16:39:09
+Harvard Crest Joggers / XL / Oxford,10676,060f02b1-c83d-11e6-fcd2-3952eb81210b,16.0,5,7,2,32.0,2017-07-18 16:39:09
+Harvard Crest Hat / Crimson,10736,060f02b1-c83d-11e6-fcd2-534dd53a101d,5.0,4,4,0,0.0,2017-07-18 16:39:10
+Harvard Crest Hat / Ivory,10742,060f02b1-c83d-11e6-fcd2-63e4125e7c1f,5.0,6,7,1,5.0,2017-07-18 16:39:10
+Pro-Weave Crewneck / Black / S,10807,060f02b1-c83d-11e6-fcd2-9d338b17ad7c,16.0,1,1,0,0.0,2017-07-18 16:39:11
+Pro-Weave Crewneck / Black / XL,10810,060f02b1-c83d-11e6-fcd2-9d338c186bfd,16.0,2,3,1,16.0,2017-07-18 16:39:11
+Pro-Weave Crewneck / Ivory / S,10811,060f02b1-c83d-11e6-fcd2-9d338c63951a,16.0,0,3,3,48.0,2017-07-18 16:39:12
+Pro-Weave Crewneck / Ivory / M,10812,060f02b1-c83d-11e6-fcd2-9d338ce8bd5d,16.0,2,3,1,16.0,2017-07-18 16:39:12
+Pro-Weave Crewneck / Ivory / L,10813,060f02b1-c83d-11e6-fcd2-9d338d484988,16.0,2,5,3,48.0,2017-07-18 16:39:13
+Pro-Weave Crewneck / Ivory / XL,10814,060f02b1-c83d-11e6-fcd2-9d338da93673,16.0,3,5,2,32.0,2017-07-18 16:39:14
+Pro-Weave Hood / Crimson / M,10816,060f02b1-c83d-11e6-fcd2-9d33d5eb4b09,18.5,2,0,-2,-37.0,2017-07-18 16:39:14
+Pro-Weave Hood / Crimson / L,10817,060f02b1-c83d-11e6-fcd2-9d33d630f06f,18.5,2,4,2,37.0,2017-07-18 16:39:15
+Pro-Weave Hood / Crimson / XL,10818,060f02b1-c83d-11e6-fcd2-9d33d69407fa,18.5,2,3,1,18.5,2017-07-18 16:39:15
+Pro-Weave Hood / Ivory / M,10820,060f02b1-c83d-11e6-fcd2-9d33d7285b5f,18.5,2,1,-1,-18.5,2017-07-18 16:39:16
+Pro-Weave Hood / Ivory / L,10821,060f02b1-c83d-11e6-fcd2-9d33d7752cef,18.5,2,1,-1,-18.5,2017-07-18 16:39:16
+Pro-Weave Hood / Ivory / XL,10822,060f02b1-c83d-11e6-fcd2-9d33d7bc2ae8,18.5,2,3,1,18.5,2017-07-18 16:39:17
+Women's Big Stripe Long Tee / Oxford / S,10837,060f02b1-c83d-11e6-fcd2-b013193df8c6,15.84,1,2,1,15.84,2017-07-18 16:39:18
+Women's Big Stripe Long Tee / Oxford / M,10838,060f02b1-c83d-11e6-fcd2-b0131998cfd6,15.84,3,3,0,0.0,2017-07-18 16:39:18
+Women's Big Stripe Long Tee / Oxford / L,10839,060f02b1-c83d-11e6-fcd2-b01319d6f08e,15.84,2,3,1,15.84,2017-07-18 16:39:19
+Women's Big Stripe Long Tee / Oxford / XL,10840,060f02b1-c83d-11e6-fcd2-b0131a8a3087,15.84,3,3,0,0.0,2017-07-18 16:39:19
+Kid's Harvard Crest Hat / Crimson,10885,060f02b1-c83d-11e6-e913-f86bce3a8b3d,4.75,5,6,1,4.75,2017-07-18 16:39:20
+Pro-Weave Hood / Ivory / XS,10917,060f02b1-c83d-11e7-e913-04fc82256883,18.5,2,4,2,37.0,2017-07-18 16:39:20
+H Long Sleeve Victory Tee / S / Ivory,10932,060f02b1-c83d-11e7-e913-20794f740d42,10.3,2,3,1,10.3,2017-07-18 16:39:21
+H Long Sleeve Victory Tee / S / Ivory,10932,060f02b1-c83d-11e7-e913-20794f740d42,10.3,3,4,1,10.3,2017-07-18 16:39:22
+H Long Sleeve Victory Tee / M / Ivory,10933,060f02b1-c83d-11e7-e913-20794fc52be6,10.3,3,5,2,20.6,2017-07-18 16:39:22
+Havard Ladies Crest TriBlend / Oxford / XS,10978,060f02b1-c83d-11e7-e913-30b99ce86693,5.72,2,1,-1,-5.72,2017-07-18 16:39:23
+Havard Ladies Crest TriBlend / Oxford / S,10979,060f02b1-c83d-11e7-e913-30b99d45e4d9,5.72,1,2,1,5.72,2017-07-18 16:39:24
+Havard Ladies Crest TriBlend / Oxford / M,10980,060f02b1-c83d-11e7-e913-30b99d90c51e,5.72,1,3,2,11.44,2017-07-18 16:39:24
+Havard Ladies Crest TriBlend / Oxford / L,10981,060f02b1-c83d-11e7-e913-30b99deded70,5.72,2,3,1,5.72,2017-07-18 16:39:25
+Havard Ladies Crest TriBlend / Oxford / XL,10982,060f02b1-c83d-11e7-e913-30b99e50c066,5.72,2,3,1,5.72,2017-07-18 16:39:25
+Harvard Ladies Designer Tee  / White / L,10986,060f02b1-c83d-11e7-e913-30ba9815e0fd,5.72,3,4,1,5.72,2017-07-18 16:39:26
+Harvard Wooden Dorm Sign,10995,060f02b1-c83d-11e7-e913-30bc1e27f0f9,7.22,4,4,0,0.0,2017-07-18 16:39:27
+Harvard Felt Pennant Magnet / Crimson,10999,060f02b1-c83d-11e7-e913-30bcc0bde538,1.59,8,18,10,15.9,2017-07-18 16:39:27
+Hat & Tee Combo / S,11004,06e08a30-ee3d-11e7-f08c-35af89870c40,11.47,13,15,2,22.94,2017-07-18 16:39:28
+Hat & Tee Combo / M,11005,06e08a30-ee3d-11e7-f08c-35af89d706a3,11.47,10,3,-7,-80.29,2017-07-18 16:39:28
+Hat & Tee Combo / L,11006,06e08a30-ee3d-11e7-f08c-35af8a23107d,11.47,14,14,0,0.0,2017-07-18 16:39:29
+Hat & Tee Combo / XL,11007,06e08a30-ee3d-11e7-f08c-35af8a88266a,11.47,4,5,1,11.47,2017-07-18 16:39:30
+H Long Sleeve Victory Tee / M / Crimson,11010,06e08a30-ee3d-11e7-f08c-3730f79e03f5,10.3,4,6,2,20.6,2017-07-18 16:39:30
+H Long Sleeve Victory Tee / L / Crimson,11011,06e08a30-ee3d-11e7-f08c-3730fc5e684a,10.3,2,2,0,0.0,2017-07-18 16:39:31
+H Long Sleeve Victory Tee / XL / Crimson,11012,06e08a30-ee3d-11e7-f08c-3731008eec34,10.3,2,2,0,0.0,2017-07-18 16:39:31
+H 1636 Hat / Crimson,11014,06e08a30-ee3d-11e7-ec24-397226765a8e,5.49,2,-2,-4,-21.96,2017-07-18 16:39:32
+Youth Trucker Hat / Crimson,11015,06e08a30-ee3d-11e7-ec24-39724df54562,5.06,9,14,5,25.299999999999997,2017-07-18 16:39:33
+Harvard Athletic Shield Hat / Crimson,11016,06e08a30-ee3d-11e7-ec24-397267b075b1,5.5,8,8,0,0.0,2017-07-18 16:39:33
+Harvard Athletic Shield Hat / Black,11017,06e08a30-ee3d-11e7-ec24-397267fe427e,5.5,8,10,2,11.0,2017-07-18 16:39:34
+Classic H Hat / Crimson,11018,06e08a30-ee3d-11e7-ec24-397292e2f5cd,5.27,18,12,-6,-31.619999999999997,2017-07-18 16:39:34
+Classic H Hat / Ivory,11019,06e08a30-ee3d-11e7-ec24-397293281e10,5.27,18,16,-2,-10.54,2017-07-18 16:39:35
+Harvard Est. 1636 Hat / Crimson,11094,06e08a30-ee3d-11e7-ec24-506f20813432,5.45,1,-2,-3,-16.35,2017-07-18 16:39:35
+Harvard Baseball Crew / L,11097,06e08a30-ee3d-11e7-ec24-5298b780185c,23.5,2,0,-2,-47.0,2017-07-18 16:39:36
+Harvard Harbor Hoodie / M,11103,06e08a30-ee3d-11e7-ec24-58094e37380b,19.6,1,0,-1,-19.6,2017-07-18 16:39:36
+Harvard Harbor Hoodie / L,11104,06e08a30-ee3d-11e7-ec24-58094e8595f4,19.6,4,-1,-5,-98.0,2017-07-18 16:39:37
+Harvard Premium Quarter Zip / Navy / L,11127,06e08a30-ee3d-11e7-ec24-5c0817bb00be,16.67,3,3,0,0.0,2017-07-18 16:39:38
+Harvard Crest T-Shirt / S / Crimson,264,51cfbeb9-6c0c-11e2-b1f5-4040782fde00,4.19,0,0,0,0.0,2017-07-18 16:39:38
+Harvard Crest T-Shirt / M / Crimson,265,524aeaef-6c0c-11e2-b1f5-4040782fde00,4.19,8,7,-1,-4.19,2017-07-18 16:39:39
+Harvard Crest T-Shirt / L / Crimson,266,528a33f1-6c0c-11e2-b1f5-4040782fde00,4.19,-4,18,22,92.18,2017-07-18 16:39:40
+Harvard Crest T-Shirt / XL / Crimson,267,52d5e500-6c0c-11e2-b1f5-4040782fde00,4.19,9,12,3,12.57,2017-07-18 16:39:40
+Harvard Crest T-Shirt / XXL / Crimson,268,5325c5e5-6c0c-11e2-b1f5-4040782fde00,4.19,7,8,1,4.19,2017-07-18 16:39:41
+Harvard Crest T-Shirt / S / Oxford,259,53653b25-6c0c-11e2-b1f5-4040782fde00,4.19,11,10,-1,-4.19,2017-07-18 16:39:41
+Harvard Crest T-Shirt / M / Oxford,260,53ae146c-6c0c-11e2-b1f5-4040782fde00,4.19,9,10,1,4.19,2017-07-18 16:39:42
+Harvard Crest T-Shirt / L / Oxford,261,53f4d252-6c0c-11e2-b1f5-4040782fde00,4.19,0,9,9,37.71,2017-07-18 16:39:43
+Harvard Crest T-Shirt / XL / Oxford,262,543e9bf8-6c0c-11e2-b1f5-4040782fde00,4.19,5,6,1,4.19,2017-07-18 16:39:43
+Harvard Crest T-Shirt / XXL / Oxford,263,547e10b9-6c0c-11e2-b1f5-4040782fde00,4.19,5,3,-2,-8.38,2017-07-18 16:39:44
+Harvard Notebook / Crimson,3841,6893efff-6c0c-11e2-b1f5-4040782fde00,2.04,0,-17,-17,-34.68,2017-07-18 16:39:44
+Harvard Crest T-Shirt / M / Navy,3942,8f78ffed-6c0d-11e2-b1f5-4040782fde00,4.19,19,19,0,0.0,2017-07-18 16:39:45
+Harvard Crest T-Shirt / L / Navy,3943,551cf059-6c0c-11e2-b1f5-4040782fde00,4.19,9,21,12,50.28,2017-07-18 16:39:45
+Harvard Crest T-Shirt / XL / Navy,3944,556e822e-6c0c-11e2-b1f5-4040782fde00,4.19,2,7,5,20.950000000000003,2017-07-18 16:39:46
+Harvard Crest T-Shirt / XXL / Navy,3973,55bdfbd1-6c0c-11e2-b1f5-4040782fde00,4.19,10,8,-2,-8.38,2017-07-18 16:39:47
+Harvard Arc T-shirt / S / Crimson,1200,4af501ae-6c0c-11e2-b1f5-4040782fde00,4.27,5,7,2,8.54,2017-07-18 16:39:47
+Harvard Arc T-shirt / M / Crimson,1201,4b83014d-6c0c-11e2-b1f5-4040782fde00,4.27,8,7,-1,-4.27,2017-07-18 16:39:48
+Harvard Arc T-shirt / L / Crimson,1119,4bc04283-6c0c-11e2-b1f5-4040782fde00,4.27,10,10,0,0.0,2017-07-18 16:39:48
+Harvard Arc T-shirt / XL / Crimson,1400,4c19a3a3-6c0c-11e2-b1f5-4040782fde00,4.27,8,8,0,0.0,2017-07-18 16:39:49
+Harvard Arc T-shirt / XXL / Crimson,1202,4c645d9c-6c0c-11e2-b1f5-4040782fde00,4.27,10,7,-3,-12.809999999999999,2017-07-18 16:39:50
+Harvard Arc T-shirt / S / Oxford,313,4caaab2a-6c0c-11e2-b1f5-4040782fde00,4.27,16,15,-1,-4.27,2017-07-18 16:39:50
+Harvard Arc T-shirt / M / Oxford,314,4cf17966-6c0c-11e2-b1f5-4040782fde00,4.27,13,8,-5,-21.349999999999998,2017-07-18 16:39:51
+Harvard Arc T-shirt / L / Oxford,315,4d392fca-6c0c-11e2-b1f5-4040782fde00,4.27,11,28,17,72.58999999999999,2017-07-18 16:39:51
+Harvard Arc T-shirt / XL / Oxford,316,4d856e76-6c0c-11e2-b1f5-4040782fde00,4.27,7,3,-4,-17.08,2017-07-18 16:39:52
+Harvard Arc T-shirt / XXL / Oxford,317,4dd1c193-6c0c-11e2-b1f5-4040782fde00,4.27,6,4,-2,-8.54,2017-07-18 16:39:52
+Harvard Arc T-shirt / S / Black,4042,4e1184c2-6c0c-11e2-b1f5-4040782fde00,4.27,8,14,6,25.619999999999997,2017-07-18 16:39:53
+Harvard Arc T-shirt / M / Black,4043,84c31ff5-6c0d-11e2-b1f5-4040782fde00,4.27,10,5,-5,-21.349999999999998,2017-07-18 16:39:54
+Harvard Arc T-shirt / L / Black,4044,4e64bdfa-6c0c-11e2-b1f5-4040782fde00,4.27,8,8,0,0.0,2017-07-18 16:39:54
+Harvard Arc T-shirt / XL / Black,4045,4eacb4e6-6c0c-11e2-b1f5-4040782fde00,4.27,9,7,-2,-8.54,2017-07-18 16:39:55
+Harvard Arc T-shirt / XXL / Black,4076,4f04c4a7-6c0c-11e2-b1f5-4040782fde00,4.27,2,2,0,0.0,2017-07-18 16:39:55
+Harvard Youth Arc T-Shirt / Crimson / YXS,3683,784504db-6c0c-11e2-b1f5-4040782fde00,4.14,10,9,-1,-4.14,2017-07-18 16:39:56
+Harvard Youth Arc T-Shirt / Crimson / YS,3684,7920933c-6c0c-11e2-b1f5-4040782fde00,4.09,12,-5,-17,-69.53,2017-07-18 16:39:56
+Harvard Youth Arc T-Shirt / Crimson / YM,3685,79c61c78-6c0c-11e2-b1f5-4040782fde00,4.3,6,16,10,43.0,2017-07-18 16:39:57
+Harvard Youth Arc T-Shirt / Crimson / YL,3686,7a6e669c-6c0c-11e2-b1f5-4040782fde00,4.29,7,12,5,21.45,2017-07-18 16:39:58
+Harvard Youth Crest T-Shirt / Pink / YXS,3383,7d4dff3d-6c0c-11e2-b1f5-4040782fde00,4.29,2,0,-2,-8.58,2017-07-18 16:39:58
+Harvard Youth Crest T-Shirt / Pink / YL,3386,7f31b0a2-6c0c-11e2-b1f5-4040782fde00,4.41,2,4,2,8.82,2017-07-18 16:39:59
+Harvard Youth Crest T-Shirt / Oxford / YS,3095,7b8799cb-6c0c-11e2-b1f5-4040782fde00,4.05,9,3,-6,-24.299999999999997,2017-07-18 16:39:59
+Harvard Youth Crest T-Shirt / Oxford / YL,3097,7cbe20c0-6c0c-11e2-b1f5-4040782fde00,3.96,9,7,-2,-7.92,2017-07-18 16:40:00
+Harvard Youth Crest T-Shirt / Crimson / YXS,3098,783f9591-6c0c-11e2-b1f5-4040782fde00,4.29,5,6,1,4.29,2017-07-18 16:40:01
+Hahvahd T-Shirt / S / Crimson,1389,48e62f41-6c0c-11e2-b1f5-4040782fde00,4.14,13,14,1,4.14,2017-07-18 16:40:01
+Hahvahd T-Shirt / M / Crimson,1390,4976b21f-6c0c-11e2-b1f5-4040782fde00,4.18,7,6,-1,-4.18,2017-07-18 16:40:02
+Hahvahd T-Shirt / L / Crimson,1391,49b50e94-6c0c-11e2-b1f5-4040782fde00,4.1,6,6,0,0.0,2017-07-18 16:40:03
+Hahvahd T-Shirt / XL / Crimson,1392,4a054deb-6c0c-11e2-b1f5-4040782fde00,4.33,6,-4,-10,-43.3,2017-07-18 16:40:03
+Hahvahd T-Shirt / XXL / Crimson,1393,4a5740fe-6c0c-11e2-b1f5-4040782fde00,6.19,5,9,4,24.76,2017-07-18 16:40:04
