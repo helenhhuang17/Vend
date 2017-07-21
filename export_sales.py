@@ -11,7 +11,7 @@ outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
 'BAS':'f92e438b-3db4-11e2-b1f5-4040782fde00'}
 trash = ['Discount','Checkout Bag Charge (25 cents)','Smart Water 20 OZ.',
-'Soda/Dasani','Additional Bag Charge ($1)']
+'Soda/Dasani','Additional Bag Charge ($1)','Tour Hahvahd Trademark Tour']
 
 s = requests.Session()
 s.headers.update({'User-Agent':'theharvardshop_stocktools_JS',"Authorization":"Bearer %s" %token})
@@ -35,7 +35,10 @@ while True:
     r=s.get("https://harvardshop.vendhq.com/api/2.0/products?after={}".format(r['version']['max'])).json()
 
 def print_sales(start,end,outlet,csv_file='export_file.csv'):
-    start = str(start) + 'T04:00:00Z'
+    if outlet == 'MTA':
+        start = str(start) + 'T21:00:00Z'
+    else:
+        start = str(start) + 'T19:00:00Z'
     end = str(end) + 'T04:00:00Z'
     print(start,end)
     sales_dict = {}
