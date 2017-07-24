@@ -9,9 +9,10 @@ import shift_planning
 
 today = date.today()
 
-for outlet in ['MTA','GAR','JFK']:
+outlets = ["MTA","JFK","GAR"]
+for outlet in outlets:
     export_sales.print_sales(today,today+timedelta(1),outlet,
-        "{}.csv".format(outlet))
+        "logs/{}.csv".format(outlet))
 
 fromaddr = "john.shen@hsa.net"
 toaddr = "alejandra.resendiz@hsa.net"
@@ -26,9 +27,8 @@ body = "Automated Message: Here are the products sold for the day."
 
 msg.attach(MIMEText(body, 'plain'))
 
-filenames = ["MTA.csv","JFK.csv","GAR.csv"]
-for f in filenames:
-    attachment = open("mta.csv", "rb")
+for f in outlets:
+    attachment = open("logs/{}.csv".format(f), "rb")
     part = MIMEBase('application', 'octet-stream')
     part.set_payload((attachment).read())
     encoders.encode_base64(part)
