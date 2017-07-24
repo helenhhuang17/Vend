@@ -63,7 +63,7 @@ def write_csv(out_file,change_list):
 def get_inventory():
     return
 
-def prewrite(product_id,d):
+def prewrite(product_id,d,outlet):
     r = s.get("https://harvardshop.vendhq.com/api/products/{}".format(
         product_id)).json()
     try:
@@ -74,10 +74,8 @@ def prewrite(product_id,d):
         return
     d['old_count'] = get_count(r,product_id,outlet)
     d['product_name']=r['name']
-    #if 'variant_name' in p:
-    #    d['variant_name'] = p['variant_name']
 
-def postwrite(product_id,response,d):
+def postwrite(product_id,response,d,outlet,changes):
     if 'product' not in response:
         print("Error: {}, sku: {}".format(response['error'],sku))
         return
@@ -109,7 +107,7 @@ def find_negatives(outlet_id):
         for item in r['data']:
             if item['outlet_id'] == outlet_id and item['inventory_level'] < 0:
                 d = {}
-                prewrite(item['product_id'],d)
+                prewrite(item['product_id'],d,outlet_id)
                 try:
                     unlawful_item = {'product_name':d['product_name'],'count':
                         item['inventory_level']}
@@ -143,10 +141,10 @@ def cli(out_file,outlet):
             continue
         product_id = get_id(sku)
         d = {}
-        prewrite(product_id,d)
+        prewrite(product_id,d,outlet)
         r = update_inventory(product_id,outlet,count)
         #write results to csv (new_count,dif)
-        postwrite(product_id,r.json(),d)
+        postwrite(product_id,r.json(),d,outlet,changes)
         write_csv("logs/{}".format(out_file),changes)
 
 def _get_outlet():
@@ -174,13 +172,13 @@ def update(in_file,out_file,outlet):
 
                 #Gets following information (name,product_id,sku,old_count)
                 d = {"sku":sku}
-                prewrite(product_id,d)
+                prewrite(product_id,d,outlet)
                 if len(sys.argv) == 5:
                     count = count + d['old_count']
                 r = update_inventory(product_id,outlet,count)
 
                 #Write results to csv (new_count,dif)
-                postwrite(product_id,r.json(),d)
+                postwrite(product_id,r.json(),d,outlet)
             write_csv("logs/{}".format(out_file),changes)
     except FileNotFoundError:
         error('input file not found')
@@ -192,7 +190,7 @@ def main():
     elif args == 2:
         return description()
     elif args == 3:
-        out_file = argv[1]
+        out_file = sys.argv[1]
         outlet = _get_outlet()
         return cli(out_file,outlet)
     else:
@@ -201,16 +199,16 @@ def main():
         return update(out_file,outlet,in_file)
     exit(0)
 
-if sys.argv[1] == 'negatives':
-    outlet = sys.argv[2]
-    product_list = find_negatives(outlets[outlet])
-    with open(sys.argv[3],'w') as f:
-        writer = csv.writer(f)
-        writer.writerow(['product name','quantity',outlet])
-        for d in product_list:
-            writer.writerow([d['product_name'],d['count']])
-    print('Sucessful Write')
-    exit(0)
+#if sys.argv[1] == 'negatives':
+#    outlet = sys.argv[2]
+#    product_list = find_negatives(outlets[outlet])
+#    with open(sys.argv[3],'w') as f:
+#        writer = csv.writer(f)
+#        writer.writerow(['product name','quantity',outlet])
+#        for d in product_list:
+#            writer.writerow([d['product_name'],d['count']])
+#    print('Sucessful Write')
+#    exit(0)
 
 if __name__ == "__main__":
     main()
