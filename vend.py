@@ -1,51 +1,38 @@
 import datetime
 import requests
 import os
+import csv
+import json
+import sys
+
+outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
+'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
+'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
+'BAS':'f92e438b-3db4-11e2-b1f5-4040782fde00'}
 
 class Vend:
-    s = requests.Session()
-    s.headers.update({'User-Agent':'theharvardshop_stocktools_JS'})
 
-    def __init__(self, company_name, user_agent, access_token):
+    def __init__(self, company_name, user_agent, token):
+        self.s = requests.Session()
+        self.s.headers.update({"User-Agent":user_agent,"Authorization:
+            "Authorization": "Bearer {}".format(token)})
         self.user_agent = user_agent
         self.company_name = company_name
-        self.access_token = access_token
-        self.base_url = "https://{}.vendhq.com/api/2.0".format(self.company_name)
-        self.__params = {}
+        self.token = token
+        self.base_url = "https://{}.vendhq.com/api/2.0".format(company_name)
+        self.params = []
         self.data = []
-
-    def __headers(self):
-        # Set headers for request
-        return {'Authorization': 'Bearer {}'.format(self.access_token)}
-
-    def __build_build_url(self, endpoint, parameters=[]):
-        # This is responsible to build request urls
+    # Takes list of parameters seperated by '/' to the endpoint URL
+    def __build_url(self, endpoint, parameters=[]):
         if parameters:
             p = '/'.join([str(param) for param in parameters])
             endpoint = "{}/{}".format(str(endpoint), p)
         return "{}/{}".format(self.base_url, endpoint)
 
-    def __build_get_request(self, endpoint, parameters=None, dict=None):
-        # Build GET requests
-        url = self.__build_build_url(endpoint, parameters=parameters)
-
-        try:
-            response = requests.get(url, headers=self.__headers(), params=self.__params)
-            if response.status_code != 200:
-                raise AssertionError()
-
-            json_response = response.json()
-            return json_response
-        except Exception as e:
-            # FIXME handle this
-            return None
-
     def __get_response(self, endpoint, parameters=None,params={}):
         url = self.__build_build_url(endpoint, parameters=parameters)
         r = requests.get(url,headers=self.__headers(),params=params)
         return r.json()
-
-
 
     def get_customers(self, id=None, code=None, email=None, since=None):
         # Get list of customers
@@ -111,17 +98,3 @@ class Vend:
         return parameters
     def get_outlets(self):
         return self.__get_response(endpoint='outlets')
-
-"""
-Stock Control
-Customers
-Outlets
-Payment Types
-Products
-Register Sales
-Registers
-Suppliers
-Taxes
-Users
-Webhooks
-"""

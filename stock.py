@@ -3,9 +3,10 @@ import requests
 import json
 import sys
 import os
-#Usage arguments: stock_count.py out.csv outlet [in.csv] [add]
+# Usage : stock.py out.csv outlet [in.csv] [add]
+# OR      stock.py negatives outlet
 
-token = os.environ['token']
+TOKEN = os.environ['token']
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
@@ -15,7 +16,7 @@ stock_file = 'product-export.csv'
 #Establish Session
 s = requests.Session()
 s.headers.update({"User-Agent":"theharvardshop_stocktools_JS","Authorization":
-    "Bearer %s" %token})
+    "Bearer {}".format(TOKEN)})
 
 #Get sku, pid correspondence
 with open(stock_file,mode='r',encoding='latin-1') as fp:
@@ -125,27 +126,11 @@ def update_inventory(product_id,outlet,count):
     return s.post("https://harvardshop.vendhq.com/api/products",data=json.dumps
         ({"id":product_id,"inventory":[{"outlet_id":outlet,"count":count}]}))
 
-#begin script
-if sys.argv[1] == 'negatives':
-    outlet = sys.argv[2]
-    product_list = find_negatives(outlets[outlet])
-    with open(sys.argv[3],'w') as f:
-        writer = csv.writer(f)
-        writer.writerow(['product name','quantity',outlet])
-        for d in product_list:
-            writer.writerow([d['product_name'],d['count']])
-    print('Sucessful Write')
-    exit(0)
+def description():
+    print("Usage : stock.py out.csv outlet [in.csv] [add]")
+    print("OR stock.py negatives outlet")
 
-if len(sys.argv) < 3:
-    error("Invalid argument number")
-try:
-    out_file = sys.argv[1]
-    outlet = outlets[sys.argv[2]]
-except KeyError:
-    error("Invalid outlet")
-
-if len(sys.argv) == 3:
+def cli(out_file,outlet):
     while True:
         changes = []
         try:
@@ -162,17 +147,24 @@ if len(sys.argv) == 3:
         r = update_inventory(product_id,outlet,count)
         #write results to csv (new_count,dif)
         postwrite(product_id,r.json(),d)
-        write_csv(out_file,changes)
+        write_csv("logs/{}".format(out_file),changes)
 
-if len(sys.argv) >= 4:
+def _get_outlet():
     try:
-        with open(sys.argv[3],'r',newline='') as f:
+        return outlets[sys.argv[2]]
+    except KeyError:
+        print("Outlet does not exist")
+        return 0
+
+def update(in_file,out_file,outlet):
+    try:
+        with open(in_file,'r',newline='') as f:
             reader = csv.reader(f)
             changes = []
 
             for row in reader:
                 if len(row) != 2:
-                    print("Error: format issue")
+                    print("Error: format issue with input file")
                     break
                 row = [int(e) for e in row]
                 sku, count = row
@@ -180,15 +172,45 @@ if len(sys.argv) >= 4:
                     continue
                 product_id = get_id(sku)
 
-                #get following information (name,product_id,sku,old_count)
+                #Gets following information (name,product_id,sku,old_count)
                 d = {"sku":sku}
                 prewrite(product_id,d)
                 if len(sys.argv) == 5:
                     count = count + d['old_count']
                 r = update_inventory(product_id,outlet,count)
 
-                #write results to csv (new_count,dif)
+                #Write results to csv (new_count,dif)
                 postwrite(product_id,r.json(),d)
-            write_csv(out_file,changes)
+            write_csv("logs/{}".format(out_file),changes)
     except FileNotFoundError:
         error('input file not found')
+
+def main():
+    args = len(sys.argv)
+    if args == 1:
+        return description()
+    elif args == 2:
+        return description()
+    elif args == 3:
+        out_file = argv[1]
+        outlet = _get_outlet()
+        return cli(out_file,outlet)
+    else:
+        out_file = argv[1]
+        outlet = _get_outlet()
+        return update(out_file,outlet,in_file)
+    exit(0)
+
+if sys.argv[1] == 'negatives':
+    outlet = sys.argv[2]
+    product_list = find_negatives(outlets[outlet])
+    with open(sys.argv[3],'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(['product name','quantity',outlet])
+        for d in product_list:
+            writer.writerow([d['product_name'],d['count']])
+    print('Sucessful Write')
+    exit(0)
+
+if __name__ == "__main__":
+    main()
