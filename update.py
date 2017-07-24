@@ -3,6 +3,7 @@ import sheets
 import os
 import csv
 import sys
+import vend
 from datetime import date,timedelta
 
 trademark_id = 'e52b2846-e93d-11e5-f98b-4867baceded1'

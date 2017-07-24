@@ -58,6 +58,28 @@ def update(spreadsheetId,rangeName,values):
     result = service.spreadsheets().values().update(spreadsheetId=spreadsheetId,
     range=rangeName,valueInputOption='USER_ENTERED',body=value_range_body).execute()
     print(result)
+def add_rows(spreadsheetId,sheetId,num):
+    body = {
+        "requests":[{
+          "insertDimension": {
+            "range": {
+              "sheetId": sheetId,
+              "dimension": "ROWS",
+              "startIndex": 1,
+              "endIndex": 1+num
+            },
+            "inheritFromBefore": False
+          }
+        }]
+    }
+    credentials = get_credentials()
+    http = credentials.authorize(httplib2.Http())
+    discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?version=v4')
+    service = discovery.build('sheets', 'v4', http=http,
+                              discoveryServiceUrl=discoveryUrl)
+    result = service.spreadsheets().batchUpdate(spreadsheetId=spreadsheetId,
+        body=body).execute()
+    print(result)
 
 if __name__ == '__main__':
     try:
