@@ -17,7 +17,7 @@ trash = ['Discount','Checkout Bag Charge (25 cents)','Smart Water 20 OZ.',
 'Soda/Dasani','Additional Bag Charge ($1)','Tour Hahvahd Trademark Tour']
 
 s = requests.Session()
-s.headers.update({'User-Agent':'theharvardshop_stocktools_JS',"Authorization":"Bearer %s" %token})
+s.headers.update({'User-Agent':'theharvardshop_trademark',"Authorization":"Bearer %s" %token})
 
 def get_sales(start,end,outlet,customer_id):
     start = str(start) + 'T04:00:00Z'
@@ -57,23 +57,27 @@ def total_price(sales_list):
         total += sale['total_price']
     return total
 
-if len(sys.argv) == 1:
-    today = date.today()
-if len(sys.argv) == 3:
-    year = 2017
-    month = int(sys.argv[1])
-    day = int(sys.argv[2])
-    today = date(year,month,day)
-if len(sys.argv) == 4:
-    year = int(sys.argv[1])
-    month = int(sys.argv[2])
-    day = int(sys.argv[3])
-    today = date(year,month,day)
+def main():
+    if len(sys.argv) == 1:
+        today = date.today()
+    if len(sys.argv) == 3:
+        year = 2017
+        month = int(sys.argv[1])
+        day = int(sys.argv[2])
+        today = date(year,month,day)
+    if len(sys.argv) == 4:
+        year = int(sys.argv[1])
+        month = int(sys.argv[2])
+        day = int(sys.argv[3])
+        today = date(year,month,day)
 
-tomorrow = today+timedelta(1)
-jfk_total = total_price(get_sales(today,tomorrow,'JFK',trademark_id))
-mta_total = total_price(get_sales(today,tomorrow,'MTA',trademark_id))
-gar_total = total_price(get_sales(today,tomorrow,'GAR',trademark_id))
-row = today.day+2
-range_name = "J{}:L{}".format(row,row)
-sheets.update(trademarkSheetsId,range_name,[[jfk_total,mta_total,gar_total]])
+    tomorrow = today+timedelta(1)
+    jfk_total = total_price(get_sales(today,tomorrow,'JFK',trademark_id))
+    mta_total = total_price(get_sales(today,tomorrow,'MTA',trademark_id))
+    gar_total = total_price(get_sales(today,tomorrow,'GAR',trademark_id))
+    row = today.day+2
+    range_name = "J{}:L{}".format(row,row)
+    sheets.update(trademarkSheetsId,range_name,[[jfk_total,mta_total,gar_total]])
+
+if __name__ == "__main__":
+    main()
