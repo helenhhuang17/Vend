@@ -17,9 +17,13 @@ def convert_date(date_string):
     - timedelta(hours=4))
 
 # Split list of sales using the times in time_splits as the barriers. The list
-# is composed of time objects.
+# is composed of time objects. Receives time_splits in descending order.
 def split_sales(sales,time_splits=[]):
-    next_split = time_splits.pop()
+    try:
+        next_split = time_splits.pop()
+    except IndexError:
+        return [sales]
+
     sales_list = []
     section = []
     for sale in sales:

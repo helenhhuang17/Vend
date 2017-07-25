@@ -9,6 +9,7 @@ import vend
 LL_vend_ID = 'e52b2846-e93d-11e5-f98b-4867acedc6be'
 LL_sheets_ID = '1PHwnRbhq4F4Q4I1zYGWsUTMr-oHmKOnYczsdl7zjjyQ'
 sheet_ID = 1964826995
+split = []
 
 TOKEN = os.environ['token']
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
@@ -48,7 +49,7 @@ def main():
             last_sale_time = sale_time
             sale_total = 0
     #sheets.add_rows(LL_sheets_ID,sheet_ID,len(tours))
-    split_sales = vend.split_sales(sales,[time(17,50,0)])
+    split_sales = vend.split_sales(sales,split)
     print("{} groups of sales".format(len(split_sales)))
     for group in split_sales:
         print(vend.convert_date(group[0]['sale_date']),sum([s['total_price'] for s in group]))
