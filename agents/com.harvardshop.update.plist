@@ -8,10 +8,10 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/local/bin/python3.6</string>
-        <string>/Users/johnshen/vend/update_trademark.py</string>
+        <string>/Users/johnshen/vend/update.py</string>
     </array>
-    <key>StartInterval</key>
-    <integer>3600</integer>
+    <key>RunAtLoad</key>
+    <true/>
     <key>StartCalendarInterval</key>
     <dict>
     	<key>Hour</key>

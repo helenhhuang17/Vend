@@ -23,10 +23,16 @@ def split_sales(sales,time_splits=[]):
     sales_list = []
     section = []
     for sale in sales:
-        if convert_date(sale['sale_date']).time() > next_split and len(time_splits):
+        if convert_date(sale['sale_date']).time() > next_split:
             sales_list.append(section)
             section = []
+            try:
+                next_split = time_splits.pop()
+            except IndexError:
+                next_split = time(23,59,59)
         section.append(sale)
+    # Append last section
+    sales_list.append(section)
     return sales_list
 
 class Vend:

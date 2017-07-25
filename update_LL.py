@@ -41,7 +41,7 @@ def main():
     last_sale_time = vend.convert_date(sales[0]['sale_date'])
     for sale in sales:
         sale_time = vend.convert_date(sale['sale_date'])
-        print(sale_time)
+        print(sale_time,sale['total_price'])
         sale_total += sale['total_price']
         if sale_time - last_sale_time > timedelta(minutes=30):
             tours.append({"sale_total":sale_total,"time":last_sale_time})
@@ -49,7 +49,8 @@ def main():
             sale_total = 0
     #sheets.add_rows(LL_sheets_ID,sheet_ID,len(tours))
     split_sales = vend.split_sales(sales,[time(17,50,0)])
+    print("{} groups of sales".format(len(split_sales)))
     for group in split_sales:
-        print(sum([s['total_price'] for s in group]))
+        print(vend.convert_date(group[0]['sale_date']),sum([s['total_price'] for s in group]))
 if __name__ == "__main__":
     main()
