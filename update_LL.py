@@ -15,11 +15,7 @@ id_dict = {
 LL_vend_ID = 'e52b2846-e93d-11e5-f98b-4867acedc6be'
 LL_sheets_ID = '1PHwnRbhq4F4Q4I1zYGWsUTMr-oHmKOnYczsdl7zjjyQ'
 sheet_ID = 1964826995
-try:
-    split = sys.argv[3]
-except:
-    print("Invalid format")
-    exit(1)
+split = [time(12,0,0)]
 split = split[::-1]
 
 TOKEN = os.environ['token']
@@ -59,7 +55,7 @@ def main():
             tours.append({"sale_total":sale_total,"time":last_sale_time})
             last_sale_time = sale_time
             sale_total = 0
-    #sheets.add_rows(LL_sheets_ID,sheet_ID,len(tours))
+    sheets.add_rows(LL_sheets_ID,sheet_ID,len(tours))
     split_sales = vend.split_sales(sales,split)
     print("{} groups of sales".format(len(split_sales)))
     for group in split_sales:
