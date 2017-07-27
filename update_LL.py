@@ -44,21 +44,19 @@ def main():
 
     tomorrow = today+timedelta(1)
     sales = update.get_sales(today,tomorrow,'MTA',LL_vend_ID)[::-1] #Reversed
-    tours = []
-    sale_total = 0
-    last_sale_time = vend.convert_date(sales[0]['sale_date'])
-    for sale in sales:
-        sale_time = vend.convert_date(sale['sale_date'])
-        print(sale_time,sale['total_price'])
-        sale_total += sale['total_price']
-        if sale_time - last_sale_time > timedelta(minutes=30):
-            tours.append({"sale_total":sale_total,"time":last_sale_time})
-            last_sale_time = sale_time
-            sale_total = 0
-    sheets.add_rows(LL_sheets_ID,sheet_ID,len(tours))
     split_sales = vend.split_sales(sales,split)
-    print("{} groups of sales".format(len(split_sales)))
+
+    sheets_payload = []
+    groups = len(split_sales)
+    print("{} groups of sales".format(groups))
     for group in split_sales:
-        print(vend.convert_date(group[0]['sale_date']),sum([s['total_price'] for s in group]))
+        group_date = vend.convert_date(group[0]['sale_date']).date()
+        group_time = vend.convert_date(group[0]['sale_date']).time()
+        group_total = sum([s['total_price'] for s in group])
+        triple = [group_date,group_time,group_total]
+        sheets_payload.append([str(e) for e in triple])
+        print(triple)
+    sheets.add_rows(LL_sheets_ID,sheet_ID,len(split)+1)
+    sheets.update(LL_sheets_ID,"B2:D{}".format(2+len(split_sales)),sheets_payload)
 if __name__ == "__main__":
     main()
