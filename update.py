@@ -6,6 +6,7 @@ import sys
 import vend
 from datetime import date,timedelta
 
+ticket_id = '3711220b-ffdc-11e2-a415-bc764e10976c'
 trademark_id = 'e52b2846-e93d-11e5-f98b-4867baceded1'
 trademarkSheetsId = '1uIw28MRuF8pEukgpUrbXXyFLGkXc16PRar8aPt8xybg'
 
@@ -58,6 +59,15 @@ def total_price(sales_list):
         total += sale['total_price']
     return total
 
+#Returns Price of total product
+def filter_sales(sales,product_id):
+    ans = 0
+    for sale in sales:
+        for item in sale['line_items']:
+            if item['product_id'] == product_id:
+                ans += item['price_total']
+    return ans
+
 def main():
     if len(sys.argv) == 1:
         today = date.today()
@@ -73,12 +83,19 @@ def main():
         today = date(year,month,day)
 
     tomorrow = today+timedelta(1)
-    jfk_total = total_price(get_sales(today,tomorrow,'JFK',trademark_id))
-    mta_total = total_price(get_sales(today,tomorrow,'MTA',trademark_id))
-    gar_total = total_price(get_sales(today,tomorrow,'GAR',trademark_id))
+    JFK_sales = get_sales(today,tomorrow,'JFK',trademark_id)
+    MTA_sales = get_sales(today,tomorrow,'MTA',trademark_id)
+    GAR_sales = get_sales(today,tomorrow,'GAR',trademark_id)
+    jfk_total = total_price(JFK_sales)
+    mta_total = total_price(MTA_sales)
+    gar_total = total_price(GAR_sales)
+    ticket_total = filter_sales(JFK_sales+MTA_sales+GAR_sales,ticket_id)
+    print(ticket_total)
+
     row = today.day+2
     range_name = "J{}:L{}".format(row,row)
     sheets.update(trademarkSheetsId,range_name,[[jfk_total,mta_total,gar_total]])
+    sheets.update(trademarkSheetsId,"O{}".format(row),[[ticket_total]])
 
 if __name__ == "__main__":
     main()
