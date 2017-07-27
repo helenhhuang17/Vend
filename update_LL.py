@@ -6,10 +6,21 @@ from datetime import date, datetime, timedelta, time
 import sheets
 import vend
 
+id_dict = {
+    "HIC":"e52b2846-e93d-11e5-f98b-49ebcf6844db",
+    "LL":"e52b2846-e93d-11e5-f98b-4867acedc6be",
+    "Charles":"06e08a30-ee3d-11e7-ec24-69d6803d9061",
+    "Trademark":"e52b2846-e93d-11e5-f98b-4867baceded1"
+}
 LL_vend_ID = 'e52b2846-e93d-11e5-f98b-4867acedc6be'
 LL_sheets_ID = '1PHwnRbhq4F4Q4I1zYGWsUTMr-oHmKOnYczsdl7zjjyQ'
 sheet_ID = 1964826995
-split = []
+try:
+    split = sys.argv[3]
+except:
+    print("Invalid format")
+    exit(1)
+split = split[::-1]
 
 TOKEN = os.environ['token']
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
@@ -18,7 +29,7 @@ outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'BAS':'f92e438b-3db4-11e2-b1f5-4040782fde00'}
 
 s = requests.Session()
-s.headers.update({'User-Agent':'theharvardshop_LL',"Authorization":"Bearer {}".format(TOKEN)})
+s.headers.update({'User-Agent':'theharvardshop commission',"Authorization":"Bearer {}".format(TOKEN)})
 
 
 def main():
