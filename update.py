@@ -4,13 +4,14 @@ import os
 import csv
 import sys
 import vend
-from datetime import date,timedelta
+import argparse
+from datetime import date, timedelta, datetime
 
 ticket_id = '3711220b-ffdc-11e2-a415-bc764e10976c'
 trademark_id = 'e52b2846-e93d-11e5-f98b-4867baceded1'
 trademarkSheetsId = '1uIw28MRuF8pEukgpUrbXXyFLGkXc16PRar8aPt8xybg'
-
 token = os.environ['token']
+
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
@@ -19,12 +20,12 @@ trash = ['Discount','Checkout Bag Charge (25 cents)','Smart Water 20 OZ.',
 'Soda/Dasani','Additional Bag Charge ($1)','Tour Hahvahd Trademark Tour']
 
 s = requests.Session()
-s.headers.update({'User-Agent':'theharvardshop_trademark',"Authorization":"Bearer %s" %token})
+s.headers.update({'User-Agent':'theharvardshop_trademark',
+"Authorization":"Bearer %s" %token})
 
-def get_sales(start,end,outlet,customer_id):
+def get_sales(start,end,outlet,customer_id=trademark_id):
     start = str(start) + 'T04:00:00Z'
     end = str(end) + 'T04:00:00Z'
-    print(start,end)
     sales_dict = {}
     if customer_id:
         url = 'https://harvardshop.vendhq.com/api/2.0/search?date_from={}&date_to={}&order_by=date&order_direction=desc&page_size=1000&status=closed&type=sales&outlet_id={}&customer_id={}'.format(start,end,outlets[outlet],customer_id)
@@ -61,36 +62,36 @@ def total_price(sales_list):
 
 #Returns Price of total product
 def filter_sales(sales,product_id):
-    ans = 0
+    total = 0
     for sale in sales:
         for item in sale['line_items']:
             if item['product_id'] == product_id:
-                ans += item['price_total']
-    return ans
+                total += item['price_total']
+    return total
 
 def main():
-    if len(sys.argv) == 1:
-        today = date.today()
-    if len(sys.argv) == 3:
-        year = 2017
-        month = int(sys.argv[1])
-        day = int(sys.argv[2])
-        today = date(year,month,day)
-    if len(sys.argv) == 4:
-        year = int(sys.argv[1])
-        month = int(sys.argv[2])
-        day = int(sys.argv[3])
-        today = date(year,month,day)
+    parser = argparse.ArgumentParser(description='Update Sales')
+    parser.add_argument("-d", "--date", help="MM/DD/YYYY")
+    args = parser.parse_args()
 
+    if args.date:
+        try:
+            today = datetime.strptime(args.date, "%m/%d/%Y").date()
+        except ValueError:
+            print("Error: format date as MM/DD/YYYY")
+            exit(1)
+    else:
+        today = date.today()
     tomorrow = today+timedelta(1)
+
     JFK_sales = get_sales(today,tomorrow,'JFK',trademark_id)
     MTA_sales = get_sales(today,tomorrow,'MTA',trademark_id)
     GAR_sales = get_sales(today,tomorrow,'GAR',trademark_id)
     jfk_total = total_price(JFK_sales)
     mta_total = total_price(MTA_sales)
     gar_total = total_price(GAR_sales)
+
     ticket_total = filter_sales(JFK_sales+MTA_sales+GAR_sales,ticket_id)
-    print(ticket_total)
 
     row = today.day+2
     range_name = "J{}:L{}".format(row,row)
