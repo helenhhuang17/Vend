@@ -93,7 +93,7 @@ def main():
 
     ticket_total = filter_sales(JFK_sales+MTA_sales+GAR_sales,ticket_id)
 
-    row = today.day+2
+    row = today.day + 2
     range_name = "J{}:L{}".format(row,row)
     sheets.update(trademarkSheetsId,range_name,[[jfk_total,mta_total,gar_total]])
     sheets.update(trademarkSheetsId,"O{}".format(row),[[ticket_total]])
