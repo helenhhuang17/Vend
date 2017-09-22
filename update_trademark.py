@@ -8,7 +8,7 @@ from datetime import date,timedelta
 trademark_id = 'e52b2846-e93d-11e5-f98b-4867baceded1'
 trademarkSheetsId = '1uIw28MRuF8pEukgpUrbXXyFLGkXc16PRar8aPt8xybg'
 
-token = 2tQzNrcZpJ7vDDXgznMJzk_rj51acWDtNLT3vyQ1
+token = '2tQzNrcZpJ7vDDXgznMJzk_rj51acWDtNLT3vyQ1'
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
