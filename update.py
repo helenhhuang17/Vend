@@ -9,7 +9,7 @@ from datetime import date, timedelta, datetime
 
 ticket_id = '3711220b-ffdc-11e2-a415-bc764e10976c'
 trademark_id = 'e52b2846-e93d-11e5-f98b-4867baceded1'
-trademarkSheetsId = '1uIw28MRuF8pEukgpUrbXXyFLGkXc16PRar8aPt8xybg'
+trademarkSheetsId = '1wxawuMNOiNHITD1Y_Sp97xYCqRuuWiApTLT7IpLVdjQ'
 token = os.environ['token']
 
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
