@@ -87,5 +87,5 @@ if __name__ == '__main__':
         flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
     except ImportError:
         flags = None
-    trademarkSheetsId = '1uIw28MRuF8pEukgpUrbXXyFLGkXc16PRar8aPt8xybg'
+    trademarkSheetsId = '1wxawuMNOiNHITD1Y_Sp97xYCqRuuWiApTLT7IpLVdjQ'
     update(trademarkSheetsId,'K22',[[1]])
