@@ -15,7 +15,7 @@ id_dict = {
 LL_vend_ID = 'e52b2846-e93d-11e5-f98b-4867acedc6be'
 LL_sheets_ID = '1PHwnRbhq4F4Q4I1zYGWsUTMr-oHmKOnYczsdl7zjjyQ'
 sheet_ID = 1964826995
-split = [time(12,0,0),time(14,0,0)]
+split = [time(12,0,0)]
 split = split[::-1]
 
 TOKEN = os.environ['token']
