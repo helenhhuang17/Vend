@@ -82,21 +82,23 @@ def main():
             exit(1)
     else:
         today = date.today()
-    tomorrow = today+timedelta(1)
+    for i in range(3):
+        today = date.today() - timedelta(i)
+        tomorrow = today+timedelta(1)
 
-    JFK_sales = get_sales(today,tomorrow,'JFK',trademark_id)
-    MTA_sales = get_sales(today,tomorrow,'MTA',trademark_id)
-    GAR_sales = get_sales(today,tomorrow,'GAR',trademark_id)
-    jfk_total = total_price(JFK_sales)
-    mta_total = total_price(MTA_sales)
-    gar_total = total_price(GAR_sales)
+        JFK_sales = get_sales(today,tomorrow,'JFK',trademark_id)
+        MTA_sales = get_sales(today,tomorrow,'MTA',trademark_id)
+        GAR_sales = get_sales(today,tomorrow,'GAR',trademark_id)
+        jfk_total = total_price(JFK_sales)
+        mta_total = total_price(MTA_sales)
+        gar_total = total_price(GAR_sales)
 
-    ticket_total = filter_sales(JFK_sales+MTA_sales+GAR_sales,ticket_id)
+        ticket_total = filter_sales(JFK_sales+MTA_sales+GAR_sales,ticket_id)
 
-    row = today.day + 2
-    range_name = "J{}:L{}".format(row,row)
-    sheets.update(trademarkSheetsId,range_name,[[jfk_total,mta_total,gar_total]])
-    sheets.update(trademarkSheetsId,"O{}".format(row),[[ticket_total]])
+        row = today.day + 2
+        range_name = "J{}:L{}".format(row,row)
+        sheets.update(trademarkSheetsId,range_name,[[jfk_total,mta_total,gar_total]])
+        sheets.update(trademarkSheetsId,"O{}".format(row),[[ticket_total]])
 
 if __name__ == "__main__":
     main()
