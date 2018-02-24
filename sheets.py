@@ -7,7 +7,8 @@ from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
 
-
+global flags
+flags = None
 
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/sheets.googleapis.com-python-quickstart.json
@@ -40,7 +41,7 @@ def get_credentials():
         if flags:
             credentials = tools.run_flow(flow, store, flags)
         else: # Needed only for compatibility with Python 2.6
-            credentials = tools.run(flow, store)
+            credentials = tools.run_flow(flow, store)
         print('Storing credentials to ' + credential_path)
     return credentials
 
@@ -58,6 +59,7 @@ def update(spreadsheetId,rangeName,values):
     result = service.spreadsheets().values().update(spreadsheetId=spreadsheetId,
     range=rangeName,valueInputOption='USER_ENTERED',body=value_range_body).execute()
     print(result)
+
 def add_rows(spreadsheetId,sheetId,num):
     body = {
         "requests":[{
@@ -84,8 +86,10 @@ def add_rows(spreadsheetId,sheetId,num):
 if __name__ == '__main__':
     try:
         import argparse
+        global flags 
         flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
     except ImportError:
+        global flags
         flags = None
     trademarkSheetsId = '1wxawuMNOiNHITD1Y_Sp97xYCqRuuWiApTLT7IpLVdjQ'
     update(trademarkSheetsId,'K22',[[1]])

@@ -18,7 +18,8 @@ sheet_ID = 1964826995
 split = [time(12,0,0)]
 split = split[::-1]
 
-TOKEN = os.environ['token']
+# TOKEN = os.environ['token']
+TOKEN = '2tQzNrcZpJ7vDDXgznMJzk_IeA7KG9IHxhifABBz'
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',

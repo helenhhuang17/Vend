@@ -8,7 +8,7 @@ from datetime import date,timedelta
 trademark_id = 'e52b2846-e93d-11e5-f98b-4867baceded1'
 trademarkSheetsId = '1wxawuMNOiNHITD1Y_Sp97xYCqRuuWiApTLT7IpLVdjQ'
 
-token = '2tQzNrcZpJ7vDDXgznMJzk_rj51acWDtNLT3vyQ1'
+token = '2tQzNrcZpJ7vDDXgznMJzk_IeA7KG9IHxhifABBz'
 outlets = {'MTA':'01f9c6db-e35e-11e2-a415-bc764e10976c',
 'GAR':'064dce89-c73d-11e5-ec2a-c92ca32c62a3',
 'JFK':'605445f3-3846-11e2-b1f5-4040782fde00',
@@ -60,7 +60,7 @@ def total_price(sales_list):
 if len(sys.argv) == 1:
     today = date.today()
 if len(sys.argv) == 3:
-    year = 2017
+    year = 2018
     month = int(sys.argv[1])
     day = int(sys.argv[2])
     today = date(year,month,day)
@@ -76,4 +76,5 @@ mta_total = total_price(get_sales(today,tomorrow,'MTA',trademark_id))
 gar_total = total_price(get_sales(today,tomorrow,'GAR',trademark_id))
 row = today.day+2
 range_name = "J{}:L{}".format(row,row)
+
 sheets.update(trademarkSheetsId,range_name,[[jfk_total,mta_total,gar_total]])
