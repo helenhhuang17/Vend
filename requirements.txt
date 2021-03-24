@@ -66,7 +66,7 @@ pyxdg==0.25
 recordtype==1.1
 reportlab==3.3.0
 requests==2.5.0
-rsa==3.4.2
+rsa==4.1
 sessioninstaller==0.0.0
 shortuuid==0.5.0
 six==1.11.0
